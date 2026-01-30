@@ -1,11 +1,11 @@
-import { LoginDto } from '../hooks/formulario';
-import { httpClientSeguranca } from '@services/httpClientSeguranca';
+import type { LoginDto } from '../hooks/formulario';
+import { httpClient } from '@services/httpClient';
 
 class LoginService {
   httpClient;
   path: string;
   constructor() {
-    this.httpClient = httpClientSeguranca;
+    this.httpClient = httpClient;
     this.path = '/autenticacao';
   }
   async login(dto: LoginDto) {

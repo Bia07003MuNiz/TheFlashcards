@@ -10,12 +10,12 @@ export const Router = () => {
         <Route element={<AuthGuard isPrivate={false} />}>
           <Route path="/login" element={<LoginPagina />} />
         </Route>
-        <Route element={<AuthGuard isPrivate={true} />}>
+        {/* <Route element={<AuthGuard isPrivate={true} />}>
           <Route element={<MenuNavegacao />}>
-            {/* <Route path="/" element={<ContaPagarPrincipal />} /> */}
+            <Route path="/" element={<ContaPagarPrincipal />} />
 
           </Route>
-        </Route>
+        </Route> */}
       </Routes>
     </BrowserRouter>
   );

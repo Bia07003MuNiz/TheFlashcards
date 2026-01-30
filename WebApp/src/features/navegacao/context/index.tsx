@@ -1,15 +1,15 @@
-import { createContext, FC, useCallback, useContext, useState } from 'react';
+import { createContext, type FC, useCallback, useContext, useState } from 'react';
 
 interface IComumContextoValue {
   abreModalDePolitica: boolean;
   setAbreModalDePolitica: React.Dispatch<React.SetStateAction<boolean>>
-  handleFechaModalPolitica: ()=> void
-  handleAbreModalPolitica: ()=> void
+  handleFechaModalPolitica: () => void
+  handleAbreModalPolitica: () => void
   politicaAtual: string
-  handleAlteraPoliticaAtual: (politicaAtual: string)=> void
+  handleAlteraPoliticaAtual: (politicaAtual: string) => void
   abreModalComoFunciona: boolean
-  handleFechaModalComoFunciona: ()=> void
-  handleAbreModalComoFunciona: ()=> void
+  handleFechaModalComoFunciona: () => void
+  handleAbreModalComoFunciona: () => void
 }
 
 const ComumContexto = createContext({} as IComumContextoValue);

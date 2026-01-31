@@ -3,9 +3,10 @@ import React, { type JSX } from 'react';
 
 type InputComumProps = TextFieldProps & {
   label?: string;
-  startAdornment?: JSX.Element
-  endAdornment?: JSX.Element
+  startAdornment?: React.ReactNode;
+  endAdornment?: React.ReactNode;
 };
+
 
 export const InputComum = React.forwardRef<HTMLInputElement, InputComumProps>(
   ({ label, error, helperText, placeholder, startAdornment, endAdornment, disabled, ...props }, ref) => {
@@ -36,60 +37,66 @@ export const InputComum = React.forwardRef<HTMLInputElement, InputComumProps>(
 );
 
 const Label = styled(Typography)`
-  font-weight: 700;
-  font-size: 13px;
+  font-weight: 600;
+  font-size: 12px;
   line-height: 16px;
-  color: #6b7280;
+  color: #334155;
 `;
 
 const Container = styled(Box)`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-`;
+  gap: 6px;`;
 
 
 const StyledTextField = styled(TextField) <TextFieldProps>`
   & .MuiOutlinedInput-root {
-    height: 42px;
-    padding: 0 13px;
-    border-radius: 8px;
-    background-color: #ffffff;
-    border: 1px solid #e6eef6;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 100%;
-    gap: 6px;
-
+    min-height: 40px;
+    padding: 12px;
+    border-radius: 12px;
+    background-color: #f8fafc;
+    border: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 
     & .MuiOutlinedInput-notchedOutline {
       border: none;
     }
 
-    &:hover .MuiOutlinedInput-notchedOutline {
-      border: none;
+    &:hover {
+      border-color: #cbd5e1;
     }
 
-    &.Mui-focused .MuiOutlinedInput-notchedOutline {
-      border: none;
+    &.Mui-focused {
+      border-color: #3b82f6;
     }
+  }
+
+  & .MuiInputBase-input {
+    padding: 0;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 16px;
+
+    &::placeholder {
+      color: #94a3b8;
+      opacity: 1;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 16px;
+    }
+  }
+
+  & .MuiInputAdornment-root {
+    margin: 0;
+    padding-right: 12px;
   }
 
   & .MuiFormHelperText-root {
     margin-left: 0;
     font-size: 12px;
     color: #d32f2f;
-  }
-
-  & .MuiInputBase-input {
-    padding: 0;
-    &::placeholder{
-    font-style: normal;
-    font-weight: 600 !important;
-    font-size: 13px;
-    line-height: 16px;
-    color: #0B1220 !important;
-    }
   }
 `;

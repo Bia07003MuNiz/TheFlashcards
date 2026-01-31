@@ -55,10 +55,10 @@ export const Globals: FC<IGlobals> = ({ children }) => {
 
     palette: {
       primary: {
-        main: '#EA5B0B',
+        main: '#1d4ed8',
       },
       secondary: {
-        main: '#BB4909',
+        main: '#2563eb',
       },
       bordaCinza: {
         main: '#E6EEF6',
@@ -87,7 +87,7 @@ export const Globals: FC<IGlobals> = ({ children }) => {
       },
     },
   }, ptBRMaterial,
-  ptBRGrid);
+    ptBRGrid);
 
   return (
     <ThemeProvider theme={theme}>
@@ -139,7 +139,7 @@ const GlobalStyles = () => (
       body: {
         lineHeight: 1.5,
         WebkitFontSmoothing: 'antialiased',
-        background: '#F9FAFB',
+        background: '#FFF',
         fontFamily: '"Inter", sans-serif !important',
         overflowX: 'hidden',
 
@@ -161,7 +161,7 @@ const GlobalStyles = () => (
         width: '0.3em',
       },
       '::-webkit-scrollbar-thumb': {
-        backgroundColor: '#EA5B0B',
+        backgroundColor: '#1d4ed8',
         borderRadius: '10px',
       },
 

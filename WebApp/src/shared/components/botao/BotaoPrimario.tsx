@@ -48,8 +48,8 @@ export const BotaoCustomizado = styled(Button)`
   padding: 10px 14px;
   gap: 4px;
   height: 40px;
-  background: #EA5B0B;
-  border: 1px solid #EE7C3C;
+  background: ${({ theme }) => theme.palette.secondary.main};
+  border: 1px solid ${({ theme }) => theme.palette.secondary.main};
   box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
   border-radius: 8px;
 `;

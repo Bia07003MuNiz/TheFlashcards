@@ -5,9 +5,8 @@ import { styled, Typography } from '@mui/material';
 const Titulo = styled(Typography)`
   font-style: normal;
   font-weight: 600;
-  font-size: 30px;
+  font-size: 36px;
   line-height: 38px;
-
   color: #1B1918;
 `;
 

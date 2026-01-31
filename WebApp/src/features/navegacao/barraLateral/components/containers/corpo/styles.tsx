@@ -15,7 +15,7 @@ export const Container = styled(Box)`
   margin: 0 auto;
   width: 342px;
   height: 100vh;
-  background-color: #F9FAFB;
+  background-color: #FFF;
 `;
 
 export const Titulo = styled(Typography)`

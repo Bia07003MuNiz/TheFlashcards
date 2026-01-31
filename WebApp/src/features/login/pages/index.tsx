@@ -3,6 +3,7 @@ import { LoginComponentes } from '../components/containers/main';
 import { Corpo } from '../components/containers/main/styles';
 import { snackBar } from '@utils/SnackBar';
 import { useEffect } from 'react';
+import { Box } from '@mui/material';
 
 
 export const LoginPagina = () => {
@@ -16,8 +17,10 @@ export const LoginPagina = () => {
   }, []);
   return (
     <Corpo>
-      <LoginComponentes.LadoApresentacao/>
-      <LoginComponentes.ConteudoPrincipal/>
+      <LoginComponentes.ConteudoPrincipal />
+      <div className="lado-apresentacao-container">
+        <LoginComponentes.LadoApresentacao />
+      </div>
     </Corpo>
   );
 };

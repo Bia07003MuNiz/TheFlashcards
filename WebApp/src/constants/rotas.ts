@@ -11,6 +11,10 @@ export const rotas = {
   NATUREZAS: '/naturezas',
   BANCOS: '/bancos',
   NOTIFICACOES: '/notificacoes',
+
+  SALA: '/sala',
+  SALA_NOVO: '/sala/novo',
+  SALA_EDITAR: '/sala/editar/:id',
 } as const;
 
 export const rotasDinamicas = {

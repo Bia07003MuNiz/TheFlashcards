@@ -7,7 +7,7 @@ const Titulo = styled(Typography)`
   font-weight: 600;
   font-size: 36px;
   line-height: 38px;
-  color: #1B1918;
+  color: #1e293b;
 `;
 
 const Medio = styled(Typography)`
@@ -15,15 +15,23 @@ const Medio = styled(Typography)`
   font-weight: 600;
   font-size: 18px;
   line-height: 28px;
-  color: #1B1918;
+  color: #1e293b;
 `;
 
 const Legenda = styled(Typography)`
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 24px;
-  color: #7A7471;
+  color: #64748b;
+`;
+
+const LegendaMedio = styled(Typography)`
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: #1e293b;
 `;
 
 const TextoGrande = styled(Typography)`
@@ -35,10 +43,29 @@ const TextoGrande = styled(Typography)`
   color: #101828;
 `;
 
+const TextoSimples = styled(Typography)`
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  color: #1e293b;
+`;
+
+const LegendaSimples = styled(Typography)`
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 24px;
+  color: #64748b;
+`;
+
 
 export const Tipografias = {
   Titulo,
   Legenda,
   TextoGrande,
   Medio,
+  LegendaMedio,
+  TextoSimples,
+  LegendaSimples
 };

@@ -139,7 +139,7 @@ const GlobalStyles = () => (
       body: {
         lineHeight: 1.5,
         WebkitFontSmoothing: 'antialiased',
-        background: '#FFF',
+        background: '#f8fafc',
         fontFamily: '"Inter", sans-serif !important',
         overflowX: 'hidden',
 

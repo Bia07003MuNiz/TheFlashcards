@@ -31,7 +31,7 @@ export const InputTexto = React.forwardRef<
       <Label>{label}</Label>
       <StyledTextField
         multiline
-        minRows={10}
+        minRows={3}
         maxRows={15}
         placeholder={placeholder}
         error={!!error}
@@ -51,48 +51,62 @@ const Container = styled(Box)`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 `;
 
 const Label = styled(Typography)`
-  font-family: Inter;
-  font-weight: 700;
-  font-size: 13px;
+  font-weight: 600;
+  font-size: 14px;
   line-height: 16px;
-  color: #6b7280;
+  color: #334155;
 `;
+
 const StyledTextField = styled(TextField) <TextFieldProps>`
   & .MuiOutlinedInput-root {
-    padding: 13px;
-    border-radius: 8px;
+    min-height: 40px;
+    padding: 12px;
+    border-radius: 12px;
     background-color: #ffffff;
-    border: 1px solid #e6eef6;
-    font-family: Inter;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 100%;
-    color: #6b7280;
-
-    &.Mui-focused {
-      border: 1px solid #e6eef6;
-    }
-
-    &:hover {
-      border: 1px solid #e6eef6;
-    }
+    border: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 
     & .MuiOutlinedInput-notchedOutline {
       border: none;
     }
+
+    &:hover {
+      border-color: #cbd5e1;
+    }
+
+    &.Mui-focused {
+      border-color: #3b82f6;
+    }
   }
 
-  textarea {
-    resize: none;
+  & .MuiInputBase-input {
+    padding: 0;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 16px;
+
+    &::placeholder {
+      color: #94a3b8;
+      opacity: 1;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+
+  & .MuiInputAdornment-root {
+    margin: 0;
+    padding-right: 12px;
   }
 
   & .MuiFormHelperText-root {
     margin-left: 0;
-    margin-top: 4px;
     font-size: 12px;
     color: #d32f2f;
   }

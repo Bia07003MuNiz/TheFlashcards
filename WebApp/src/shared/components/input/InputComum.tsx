@@ -38,7 +38,7 @@ export const InputComum = React.forwardRef<HTMLInputElement, InputComumProps>(
 
 const Label = styled(Typography)`
   font-weight: 600;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 16px;
   color: #334155;
 `;
@@ -55,7 +55,7 @@ const StyledTextField = styled(TextField) <TextFieldProps>`
     min-height: 40px;
     padding: 12px;
     border-radius: 12px;
-    background-color: #f8fafc;
+    background-color: #ffffff;
     border: 1px solid #e5e7eb;
     display: flex;
     align-items: center;
@@ -84,7 +84,7 @@ const StyledTextField = styled(TextField) <TextFieldProps>`
       color: #94a3b8;
       opacity: 1;
       font-weight: 600;
-      font-size: 12px;
+      font-size: 14px;
       line-height: 16px;
     }
   }

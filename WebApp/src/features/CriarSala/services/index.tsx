@@ -65,8 +65,8 @@ class SalaService {
     return data;
   }
 
-  async buscar(params?: string): Promise<SalaListagem> {
-    const { data } = await this.httpClient.get<SalaListagem>(`${this.path}`);
+  async buscar(params?: string): Promise<SalaListagem[]> {
+    const { data } = await this.httpClient.get<SalaListagem[]>(`${this.path}`);
     return data;
   }
 

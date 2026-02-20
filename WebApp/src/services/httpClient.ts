@@ -11,7 +11,7 @@ export const httpClient = axios.create({
 
 httpClient.interceptors.request.use((config) => {
   const token = localStorageService.getToken();
-  if (token) {config.headers.Authorization = `Bearer ${token}`;}
+  if (token) { config.headers.Authorization = `Bearer ${token}`; }
   return config;
 });
 

@@ -2,7 +2,7 @@ import salaService, { type SalaListagem } from '@features/CriarSala/services';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { snackBar } from '@utils/SnackBar';
 
-export const useSalas = (deveBuscarTodos = true) => {
+export const useSalasBuscar = (deveBuscarTodos = true) => {
     const { data = [], isLoading, refetch } = useQuery<SalaListagem[]>({
         queryKey: ['salas'],
         queryFn: () => salaService.buscar(),

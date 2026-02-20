@@ -213,3 +213,52 @@ export const ContainerBotao = styled(Box)`
     line-height: 16px;
   }
 `;
+
+export const CardListaPerguntaAdicionado = styled(Box)`
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+  background-color: #fff;
+  border-radius: 14px;
+  border: 2px solid #e2e8f0;
+  margin-top: 16px;
+
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+
+  .icon-livro {
+    align-self: flex-start; 
+    .numero-flashcard {
+      font-weight: 600;
+      font-size: 14px;
+      color: #4f39f6;
+    }
+  }
+
+  .conteudo {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 15px;
+  }
+
+  .acoes {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .respostaTexto {
+    color: #627891;
+  }
+  .respostaTextoDois {
+    color: #627891;
+    margin-top: 10px;
+  }
+
+`;

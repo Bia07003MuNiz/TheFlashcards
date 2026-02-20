@@ -1,81 +1,62 @@
 import { Container, Conteudo } from './styles';
 import { useMemo } from 'react';
-// import { TabelaComponent } from '@shared/components/tabelas';
-import type { GridColDef } from '@mui/x-data-grid';
-import { BackDropCustomizado } from '@shared/components/backDrop';
+import { useNavigate } from 'react-router-dom';
 
-interface IProps {
-  abreModalEditar: boolean;
-  setAbreModalEditar: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import { BackDropCustomizado } from '@shared/components/backDrop';
+import { CardsComponent } from '@shared/components/cards';
+import { BotaoCustomizado } from '@shared/components/botao';
+import { Tipografias } from '@shared/components/tipografias';
+import { Chip } from '@mui/material';
+
+import { BookOpen, Pencil } from 'lucide-react';
+import { useSalas } from '../novo/hooks/queryes';
 
 export const Cards = () => {
-  // const { adicionaIdEmLocalStorage } = useLocalStorageNaturezas();
+  const { data = [], isLoading, isPending } = useSalas();
+  const navigate = useNavigate();
 
-  const columns: GridColDef[] = useMemo(() => [
-    {
-      field: 'nome',
-      headerName: 'Natureza',
-      width: 400,
-    },
-    {
-      field: 'naturezaPai',
-      headerName: 'Natureza Pai',
-      width: 300,
-      renderCell: (params) => params?.row?.naturezaPai?.nome ? params?.row?.naturezaPai?.nome : 'N/A',
-    },
-    {
-      field: 'ehNaturezapai',
-      headerName: 'É Natureza Pai',
-      width: 130,
-      renderCell: (params) => params?.row?.ehNaturezapai ? 'Sim' : 'Não',
-    },
-    {
-      field: 'ativa',
-      headerName: 'Ativo',
-      width: 100,
-      renderCell: (params) => params?.row?.ehNaturezapai ? 'Sim' : 'Não',
-    },
-    {
-      field: 'ehDespesa',
-      headerName: 'Despesa',
-      width: 100,
-      renderCell: (params) => params?.row?.ehDespesa ? 'Sim' : 'Não',
-    },
-    // {
-    //   field: 'editar',
-    //   type: 'actions',
-    //   headerName: 'Editar',
-    //   width: 100,
-    //   cellClassName: 'actions',
-    //   getActions: ({ row }) => {
-    //     return [
-    //       <IconButton onClick={() => {
-    //         setAbreModalEditar(true);
-    //         adicionaIdEmLocalStorage(row);
-    //       }}>
-    //         <Pencil size={20} />
-    //       </IconButton>,
-    //       <IconButton onClick={() => console.log(row)}>
-    //         <Trash size={20} />
-    //       </IconButton>,
-    //     ];
-    //   },
-    // },
-
-  ], []);
+  const cards = useMemo(
+    () =>
+      data.map((item) => ({
+        label: `${item.nome} - ${item.turma}`,
+        icon: <BookOpen size={16} color="#76869c" />,
+        legenda: (
+          <Tipografias.LegendaSimples>
+            {item.descricao}
+          </Tipografias.LegendaSimples>
+        ),
+        chip: (
+          <Chip
+            label={item.ativa ? 'Ativo' : 'Inativo'}
+            color={item.ativa ? 'success' : 'error'}
+            size="small"
+          />
+        ),
+        botao: (
+          <BotaoCustomizado.BotaoPrimario
+            titulo="Editar"
+            startIcon={<Pencil size={18} />}
+            onClick={() => navigate(`/sala/${item.id}`)}
+          />
+        ),
+      })),
+    [data]
+  );
 
   return (
     <Container>
       <Conteudo>
-        {/* <TabelaComponent
-          columns={columns ?? []}
-          rows={data}
-          loading={false}
-        // getRowId={(usuario) => usuario.id}
-        /> */}
+        <CardsComponent
+          items={cards}
+          emptyState={
+            <Tipografias.LegendaSimples>
+              Nenhum registro encontrado
+            </Tipografias.LegendaSimples>
+          }
+        />
       </Conteudo>
-      {/* <BackDropCustomizado aberto={isLoading || isPending} /> */}
+
+      <BackDropCustomizado aberto={isLoading || isPending} />
     </Container>
   );
 };

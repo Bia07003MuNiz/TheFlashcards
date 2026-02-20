@@ -1,17 +1,42 @@
 import * as React from 'react';
-import { BlocoAzulIcon, CardPerguntasERespostas, CardsContainerConfiguracoes, CardsContainerFlashcards, CardsContainerInformacaoGeral, CardsInformacoesAdicionais, CardVisualizarFlashcards, ColunaDireita, ColunaEsquerda, ContainerBotao, ContainerConfiguracoesTextos, ContainerConfiguracoesTextosLinha, ContainerLayout, Divider, InputContainer, TextoInformacoesAdicionais } from './styles';
+import { BlocoAzulIcon, CardListaPerguntaAdicionado, CardPerguntasERespostas, CardsContainerConfiguracoes, CardsContainerFlashcards, CardsContainerInformacaoGeral, CardsInformacoesAdicionais, CardVisualizarFlashcards, ColunaDireita, ColunaEsquerda, ContainerBotao, ContainerConfiguracoesTextos, ContainerConfiguracoesTextosLinha, ContainerLayout, Divider, InputContainer, TextoInformacoesAdicionais } from './styles';
 import { Tipografias } from '@shared/components/tipografias';
 import { InputCustomizado } from '@shared/components/input';
-import { BookOpen, Info, Plus, SlidersHorizontal } from 'lucide-react';
+import { BookOpen, Info, Pencil, Plus, SlidersHorizontal, Trash2 } from 'lucide-react';
 import { BotaoCustomizado } from '@shared/components/botao';
 import { useSalaController } from '../../hooks/index';
 import { Controller } from 'react-hook-form';
+import { useState } from 'react';
 
 export const CorpoNovaSala = () => {
 
-  const { errors, register, handleSala, control } = useSalaController();
+  const {
+    register,
+    control,
+    errors,
+    watch,
+    append,
+    remove,
+    fields,
+    handleSala,
+    setValue,
+  } = useSalaController();
   const [permitirTentativas, setPermitirTentativas] = React.useState(false);
   const [salaAtiva, setSalaAtiva] = React.useState(false);
+
+  const pergunta = watch('flashcardTemp.pergunta');
+  const resposta = watch('flashcardTemp.resposta');
+
+  const botaoDesabilitado = !pergunta || !resposta;
+  const adicionarFlashcard = () => {
+    if (!pergunta || !resposta) return;
+
+    append({ pergunta, resposta });
+
+    setValue('flashcardTemp.pergunta', '');
+    setValue('flashcardTemp.resposta', '');
+  };
+
   return (
 
     <ContainerLayout>
@@ -99,29 +124,76 @@ export const CorpoNovaSala = () => {
                 <InputCustomizado.InputComum
                   label="Pergunta"
                   placeholder="Digite a pergunta do flashcard"
-                  {...register('flashcards.0.pergunta')}
-                  error={!!errors.flashcards?.[0]?.pergunta}
-                  helperText={errors.flashcards?.[0]?.pergunta?.message}
+                  {...register('flashcardTemp.pergunta')}
+                  error={!!errors.flashcardTemp?.pergunta}
+                  helperText={errors.flashcardTemp?.pergunta?.message}
                 />
 
                 <div className="input">
-                  <InputCustomizado.InputTexto
-                    label="Resposta"
-                    placeholder="Digite a resposta do flashcard"
-                    {...register('flashcards.0.resposta')}
-                    error={!!errors.flashcards?.[0]?.resposta}
-                    helperText={errors.flashcards?.[0]?.resposta?.message}
+                  <Controller
+                    name="flashcardTemp.resposta"
+                    control={control}
+                    render={({ field }) => (
+                      <InputCustomizado.InputTexto
+                        label="Resposta"
+                        placeholder="Digite a resposta do flashcard"
+                        {...register('flashcardTemp.resposta')}
+                        error={!!errors.flashcardTemp?.resposta}
+                        helperText={errors.flashcardTemp?.resposta?.message}
+                      />
+                    )}
                   />
+
                 </div>
 
                 <ContainerBotao>
-                  <BotaoCustomizado.BotaoPrimario startIcon={<Plus size={20} />} />
+                  <BotaoCustomizado.BotaoPrimario
+                    startIcon={<Plus size={20} />}
+                    disabled={botaoDesabilitado}
+                    onClick={adicionarFlashcard}
+                  />
                 </ContainerBotao>
-                <CardVisualizarFlashcards>
-                  <BookOpen size={32} color="#c7d0dc" />
-                  <span className="titulo">Nenhum flashcard criado ainda</span>
-                  <span className="descricao">Preencha o formulário acima para adicionar</span>
-                </CardVisualizarFlashcards>
+                {fields.length === 0 ? (
+                  <CardVisualizarFlashcards>
+                    <BookOpen size={32} color="#c7d0dc" />
+                    <span className="titulo">Nenhum flashcard criado ainda</span>
+                    <span className="descricao">
+                      Preencha o formulário acima para adicionar
+                    </span>
+                  </CardVisualizarFlashcards>
+                ) : (
+                  fields.map((item, index) => (
+                    <CardListaPerguntaAdicionado key={item.id}>
+                      <div className="icon-livro">
+                        <BlocoAzulIcon>
+                          <span className="numero-flashcard">{index + 1}</span>
+                        </BlocoAzulIcon>
+                      </div>
+
+                      <div className="conteudo">
+                        <Tipografias.TextoSimples>PERGUNTA</Tipografias.TextoSimples>
+                        <Tipografias.TextoSimples>{item.pergunta}</Tipografias.TextoSimples>
+
+                        <Tipografias.TextoSimples className="respostaTextoDois">
+                          RESPOSTA
+                        </Tipografias.TextoSimples>
+                        <Tipografias.TextoSimples className="respostaTexto">
+                          {item.resposta}
+                        </Tipografias.TextoSimples>
+                      </div>
+
+                      <div className="acoes">
+                        <Pencil size={20} color="#4f39f6" />
+                        <Trash2
+                          size={20}
+                          color="#ee124d"
+                          onClick={() => remove(index)}
+                        />
+                      </div>
+                    </CardListaPerguntaAdicionado>
+                  ))
+                )}
+
 
               </CardPerguntasERespostas>
             </InputContainer>

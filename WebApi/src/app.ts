@@ -6,7 +6,6 @@ import compression from "compression";
 import helmet from "helmet";
 
 import routes from "./modules/index.routes";
-
 import AppException from "@errors/app-exception";
 
 class App {
@@ -14,41 +13,34 @@ class App {
 
   constructor() {
     this.app = express();
-    this.registerMiddlewares();
-    this.registerRoutes();
-    this.registerGlobalErrorHandlerRoute();
+    this.middlewares();
+    this.routes();
+    this.errors();
   }
 
-  private registerMiddlewares() {
-    this.app.use(express.json({ limit: "50mb" }));
-    this.app.use(express.urlencoded({ limit: "50mb", extended: true }));
-    this.app.use(cors());
+  private middlewares() {
+    this.app.use(cors({
+      origin: "http://localhost:5173",
+      credentials: true,
+    }));
+    this.app.use(express.json());
     this.app.use(cookieParser());
     this.app.use(compression());
     this.app.use(helmet());
   }
 
-  private registerRoutes() {
-    this.app.use("/api", routes);
+  private routes() {
+    this.app.use("/", routes);
   }
 
-  private registerGlobalErrorHandlerRoute() {
-    this.app.use(
-      (
-        err: any,
-        _req: express.Request,
-        res: express.Response,
-        _next: express.NextFunction
-      ) => {
-        if (err instanceof AppException) {
-          res.status(err.status).json({ error: err.message });
-        }
-
-        return res.status(500).json({
-          error: "Erro interno do servidor"
-        });
+  private errors() {
+    this.app.use((err: any, _req: any, res: any, _next: any) => {
+      if (err instanceof AppException) {
+        return res.status(err.status).json({ error: err.message });
       }
-    );
+
+      return res.status(500).json({ error: "Erro interno do servidor" });
+    });
   }
 }
 

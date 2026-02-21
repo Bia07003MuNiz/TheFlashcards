@@ -1,13 +1,14 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, useFieldArray } from 'react-hook-form';
+import { useEffect } from 'react';
 import { useSalas } from './queryes';
 import { z } from 'zod';
+import type { SalaListagem } from '@features/CriarSala/services';
 
 const FlashcardTempSchema = z.object({
     pergunta: z.string().optional(),
     resposta: z.string().optional(),
 });
-
 
 export const SalaSchema = z.object({
     nome: z.string().min(1),
@@ -30,16 +31,16 @@ export const SalaSchema = z.object({
 
     flashcards: z.array(
         z.object({
-            pergunta: z.string().min(1, 'Pergunta obrigatória'),
-            resposta: z.string().min(1, 'Resposta obrigatória'),
+            pergunta: z.string().min(1),
+            resposta: z.string().min(1),
         })
-    ).min(1, 'Adicione pelo menos um flashcard'),
+    ),
 });
 
 export type CriarSalaComFlashcardsForm = z.infer<typeof SalaSchema>;
 
-export const useSalaController = () => {
-    const { post } = useSalas();
+export const useSalaController = (sala?: any, id?: number) => {
+    const { editar } = useSalas(id);
 
     const {
         control,
@@ -52,9 +53,6 @@ export const useSalaController = () => {
     } = useForm<CriarSalaComFlashcardsForm>({
         resolver: zodResolver(SalaSchema),
         defaultValues: {
-            ativa: true,
-            permitir_tentativas: false,
-            limite_tentativas: null,
             flashcards: [],
         },
     });
@@ -64,22 +62,40 @@ export const useSalaController = () => {
         name: 'flashcards',
     });
 
-    const PROFESSOR_FIXO_ID = 1;
+    useEffect(() => {
+        if (sala) {
+            reset({
+                nome: sala.nome,
+                descricao: sala.descricao,
+                turma: sala.turma,
+                ativa: sala.ativa,
+                permitir_tentativas: sala.permitir_tentativas,
+                limite_tentativas: sala.limite_tentativas ?? null,
+                instituicao_id: sala.instituicao_id,
+                professor_id: sala.professor_id,
+                flashcards: sala.flashcards ?? [],
+            });
+        }
+    }, [sala, reset]);
+
 
     const handleSala = handleSubmit(async (data) => {
+        if (!id) return;
+
         const { flashcardTemp, ...rest } = data;
 
         const payload = {
             ...rest,
-            professor_id: PROFESSOR_FIXO_ID,
             limite_tentativas: rest.permitir_tentativas
                 ? rest.limite_tentativas ?? null
                 : null,
         };
 
-        await post(payload);
+        await editar({
+            id,
+            payload: data as unknown as SalaListagem,
+        });
     });
-
 
     return {
         handleSala,
@@ -91,6 +107,6 @@ export const useSalaController = () => {
         remove,
         update,
         fields,
-        setValue
+        setValue,
     };
 };

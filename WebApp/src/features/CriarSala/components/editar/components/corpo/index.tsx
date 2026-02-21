@@ -1,35 +1,56 @@
 import * as React from 'react';
-import { BlocoAzulIcon, CardListaPerguntaAdicionado, CardPerguntasERespostas, CardsContainerConfiguracoes, CardsContainerFlashcards, CardsContainerInformacaoGeral, CardsInformacoesAdicionais, CardVisualizarFlashcards, ColunaDireita, ColunaEsquerda, ContainerBotao, ContainerConfiguracoesTextos, ContainerConfiguracoesTextosLinha, ContainerLayout, Divider, InputContainer, TextoInformacoesAdicionais } from './styles';
+import {
+  BlocoAzulIcon,
+  CardListaPerguntaAdicionado,
+  CardPerguntasERespostas,
+  CardsContainerConfiguracoes,
+  CardsContainerFlashcards,
+  CardsContainerInformacaoGeral,
+  CardsInformacoesAdicionais,
+  CardVisualizarFlashcards,
+  ColunaDireita,
+  ColunaEsquerda,
+  ContainerBotao,
+  ContainerConfiguracoesTextos,
+  ContainerConfiguracoesTextosLinha,
+  ContainerLayout,
+  Divider,
+  InputContainer,
+  TextoInformacoesAdicionais,
+} from './styles';
 import { Tipografias } from '@shared/components/tipografias';
 import { InputCustomizado } from '@shared/components/input';
 import { BookOpen, Info, Pencil, Plus, SlidersHorizontal, Trash2 } from 'lucide-react';
 import { BotaoCustomizado } from '@shared/components/botao';
-import { useSalaController } from '../../hooks/index';
 import { Controller } from 'react-hook-form';
-import { useState } from 'react';
+import type { FC } from 'react';
+import type { useSalaController } from '../../hooks';
 import { useSalas } from '../../hooks/queryes';
 import { BackDropCustomizado } from '@shared/components/backDrop';
 import { turmas } from '@utils/ListaTurma';
 
-export const CorpoNovaSala = () => {
+type Props = ReturnType<typeof useSalaController>;
 
-  const {
-    register,
-    control,
-    errors,
-    watch,
-    append,
-    remove,
-    fields,
-    handleSala,
-    setValue,
-  } = useSalaController();
+export const CorpoEditarSala: FC<Props> = ({
+  register,
+  control,
+  errors,
+  watch,
+  append,
+  remove,
+  fields,
+  handleSala,
+  setValue,
+}) => {
+  const [permitirTentativas, setPermitirTentativas] = React.useState(false);
+  const [salaAtiva, setSalaAtiva] = React.useState(false);
   const { instituicoes, estaCarregandoInstituicoes } = useSalas();
 
   const pergunta = watch('flashcardTemp.pergunta');
   const resposta = watch('flashcardTemp.resposta');
 
   const botaoDesabilitado = !pergunta || !resposta;
+
   const adicionarFlashcard = () => {
     if (!pergunta || !resposta) return;
 
@@ -38,7 +59,6 @@ export const CorpoNovaSala = () => {
     setValue('flashcardTemp.pergunta', '');
     setValue('flashcardTemp.resposta', '');
   };
-  console.log("instituicoes", instituicoes)
 
   return (
 
@@ -305,3 +325,4 @@ export const CorpoNovaSala = () => {
     </ContainerLayout>
   )
 };
+

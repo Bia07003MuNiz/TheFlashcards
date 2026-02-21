@@ -36,7 +36,7 @@ export const Cards = () => {
           <BotaoCustomizado.BotaoPrimario
             titulo="Editar"
             startIcon={<Pencil size={18} />}
-            onClick={() => navigate(`/sala/${item.id}`)}
+            onClick={() => navigate(`/sala/editar/${item.id}`)}
           />
         ),
       })),

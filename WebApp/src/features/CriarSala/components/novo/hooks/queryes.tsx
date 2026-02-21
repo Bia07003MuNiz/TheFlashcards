@@ -1,6 +1,7 @@
 import salaService, { type SalaListagem } from '@features/CriarSala/services';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { snackBar } from '@utils/SnackBar';
+import instituicaoService from '@features/instituicoes/services';
 
 export const useSalas = (deveBuscarTodos = true) => {
     const { data = [], isLoading, refetch } = useQuery<SalaListagem[]>({
@@ -25,5 +26,14 @@ export const useSalas = (deveBuscarTodos = true) => {
         },
     });
 
-    return { data, isLoading, isPending, post };
+    const { data: instituicoes, isLoading: estaCarregandoInstituicoes, refetch: buscaInstituicoesNovamente } = useQuery({
+        queryKey: ['buscaInstituicoesParaFiltro'],
+        queryFn: async () => await instituicaoService.buscar(),
+        select: (data) => data.map((instituicao) => ({
+            value: instituicao.id,
+            label: instituicao.nome,
+        })),
+    });
+
+    return { data, isLoading, isPending, post, instituicoes, estaCarregandoInstituicoes, buscaInstituicoesNovamente };
 };

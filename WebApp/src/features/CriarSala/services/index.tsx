@@ -7,8 +7,11 @@ export interface CriarFlashcardDto {
 
 export interface CriarSalaComFlashcardsDto {
   nome: string;
-  descricao: string;
+  descricao?: string;
   turma: string;
+  ativa: boolean;
+  permitir_tentativas: boolean;
+  limite_tentativas?: number | null;
   instituicao_id: number;
   professor_id: number;
   flashcards: CriarFlashcardDto[];
@@ -70,6 +73,10 @@ class SalaService {
     return data;
   }
 
+  async listarUnico(id: number) {
+    const { data } = await this.httpClient.get<SalaListagem>(`${this.path}/${id}`,);
+    return data;
+  }
 }
 
 export default new SalaService();

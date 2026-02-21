@@ -4,6 +4,7 @@ import { MenuNavegacao } from '@features/navegacao';
 import { LoginPagina } from '@features/login/pages';
 import { SalaPagina } from '@features/CriarSala/pages';
 import { NovaSala } from '@features/CriarSala/components/novo';
+import { SalaEditar } from '@features/CriarSala/components/editar/pages';
 
 export const Router = () => {
   return (
@@ -17,8 +18,7 @@ export const Router = () => {
 
             <Route path="/sala" element={<SalaPagina />} />
             <Route path="/sala/novo" element={<NovaSala />} />
-            <Route path="/sala/editar/:id" element={<SalaPagina />} />
-
+            <Route path="/sala/editar/:id" element={<SalaEditar />} />
 
           </Route>
         </Route>

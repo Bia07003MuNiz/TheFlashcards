@@ -58,22 +58,26 @@ model Usuario {
 }
 
 model Sala {
-  id              Int      @id @default(autoincrement())
-  nome            String
-  descricao       String?
-  turma           String
-  ativa           Boolean  @default(true)
+  id                   Int      @id @default(autoincrement())
+  nome                 String
+  descricao            String?
+  turma                String
 
-  instituicao_id  Int
-  professor_id    Int
+  ativa                Boolean  @default(true)
 
-  instituicao     Instituicao @relation(fields: [instituicao_id], references: [id])
-  professor       Usuario     @relation("ProfessorSalas", fields: [professor_id], references: [id])
+  permitir_tentativas  Boolean  @default(false)
+  limite_tentativas    Int?
 
-  flashcards      Flashcard[]
-  relatorio_geral RelatorioGeral?
+  instituicao_id       Int
+  professor_id         Int
 
-  created_at      DateTime @default(now())
+  instituicao          Instituicao @relation(fields: [instituicao_id], references: [id])
+  professor            Usuario     @relation("ProfessorSalas", fields: [professor_id], references: [id])
+
+  flashcards           Flashcard[]
+  relatorio_geral      RelatorioGeral?
+
+  created_at           DateTime @default(now())
 }
 
 model Flashcard {

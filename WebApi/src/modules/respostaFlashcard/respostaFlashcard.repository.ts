@@ -32,7 +32,41 @@ class RespostaFlashcardRepository {
     const relatorioGeral = await this.relatorioGeral.readBySalaId(sala_id);
     if (!relatorioGeral) throw new Error("Relatório geral da sala não existe");
 
-    const tentativas = await this.relatorioAluno.readByAlunoAndGeral(aluno_id, relatorioGeral.id);
+    const sala = await DataSource.sala.findUnique({
+      where: { id: sala_id },
+    });
+
+    if (!sala) throw new Error("Sala não encontrada");
+
+    // 🔹 Se sala não permite novas tentativas
+    if (!sala.permitir_tentativas) {
+      const tentativasExistentes = await this.relatorioAluno.readByAlunoAndGeral(
+        aluno_id,
+        relatorioGeral.id
+      );
+
+      if (tentativasExistentes.length > 0) {
+        throw new Error("Esta sala não permite novas tentativas");
+      }
+    }
+
+    // 🔹 Se tem limite definido
+    if (sala.limite_tentativas) {
+      const tentativasExistentes = await this.relatorioAluno.readByAlunoAndGeral(
+        aluno_id,
+        relatorioGeral.id
+      );
+
+      if (tentativasExistentes.length >= sala.limite_tentativas) {
+        throw new Error("Limite de tentativas atingido");
+      }
+    }
+
+    const tentativas = await this.relatorioAluno.readByAlunoAndGeral(
+      aluno_id,
+      relatorioGeral.id
+    );
+
     const tentativa_numero = tentativas.length + 1;
 
     const relatorioAluno = await this.relatorioAluno.create({
@@ -41,7 +75,10 @@ class RespostaFlashcardRepository {
       tentativa_numero,
       total_flashcards: respostas.length,
       total_acertos: respostas.filter(r => r.resposta === "CERTO").length,
-      respostas: respostas.map(r => ({ flashcard_id: r.flashcard_id, resposta: r.resposta })),
+      respostas: respostas.map(r => ({
+        flashcard_id: r.flashcard_id,
+        resposta: r.resposta
+      })),
     });
 
     return {

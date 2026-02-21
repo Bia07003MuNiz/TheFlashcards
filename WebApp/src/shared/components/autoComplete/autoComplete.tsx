@@ -18,7 +18,7 @@ export type OpcoesAutoCompleteZodDto = z.output<typeof OpcoesAutoCompleteZod>;
 interface BaseOption {
   label: string;
   id?: string | number;
-  value?: string;
+  value?: string | number;
 }
 
 interface IAutoComplete<T extends BaseOption> {
@@ -48,17 +48,25 @@ export const AutoComplete = <T extends BaseOption>({
   disabled = false,
 }: IAutoComplete<T>) => {
   const [open, setOpen] = React.useState(false);
+
+  const getOptionKey = (option?: BaseOption | null) =>
+    option?.value ?? option?.id ?? null;
+
   return (
     <Container>
       <Label>{label}</Label>
+
+
       <Autocomplete
         open={open}
         onOpen={() => setOpen(true)}
         onClose={() => setOpen(false)}
-        options={options}
-        value={value || null}
-        isOptionEqualToValue={(option, value) => option.value === value.value}
-        getOptionLabel={(option) => option.label ?? ''}
+        options={options || []}
+        value={value ?? null}
+        isOptionEqualToValue={(option, value) =>
+          getOptionKey(option) === getOptionKey(value)
+        }
+        getOptionLabel={(option) => option?.label ?? ''}
         onChange={(_event, newValue) => {
           handleChangeState?.(newValue || null);
           setOpen(false);

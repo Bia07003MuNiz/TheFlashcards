@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
-import salaService, { type SalaListagem } from '@features/CriarSala/services';
+import salaService, { type EditarSalaComFlashcardsDto } from '@features/CriarSala/services';
 import { snackBar } from '@utils/SnackBar';
 import instituicaoService from '@features/instituicoes/services';
 
@@ -15,7 +15,7 @@ export const useSalas = (id?: number) => {
     } = useMutation({
         mutationKey: ['Salas'],
         mutationFn: async ({ id, payload }: {
-            id: number, payload: SalaListagem
+            id: number, payload: EditarSalaComFlashcardsDto
         }) => {
             return await salaService.editar(id, payload);
         },

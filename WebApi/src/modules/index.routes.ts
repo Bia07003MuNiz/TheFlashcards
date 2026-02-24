@@ -6,6 +6,7 @@ import SalaRoutes from "./sala/sala.routes";
 import RelatorioGeralRoutes from "./relatorioGeral/relatorioGeral.routes";
 import RespostaFlashcardRoutes from "./respostaFlashcard/respostaFlashcard.routes";
 import RelatorioAlunoRoutes from "./relatorioAluno/relatorioAluno.routes";
+import FlashcardRoutes from "./flashcard/flashcard.routes";
 
 const router = Router();
 
@@ -15,5 +16,6 @@ router.use("/sala", SalaRoutes);
 router.use("/relatorio-geral", RelatorioGeralRoutes);
 router.use("/relatorio-aluno", RelatorioAlunoRoutes);
 router.use("/resposta-flashcard", RespostaFlashcardRoutes);
+router.use("/flashcard", FlashcardRoutes);
 
 export default router;

@@ -17,9 +17,9 @@ export const CabecalhoEditarSala = () => {
           </div>
 
           <div className="textos">
-            <Tipografias.Titulo>Salas Criadas</Tipografias.Titulo>
+            <Tipografias.Titulo>Editar Sala</Tipografias.Titulo>
             <Tipografias.Legenda>
-              Crie salas, publique flashcards e acompanhe resultados
+              Atualize a sala, edite os flashcards e acompanhe os resultados.
             </Tipografias.Legenda>
           </div>
         </ConteudoInical>

@@ -24,7 +24,7 @@ class SalaRepository {
 
   public async read() {
     return this.repository.findMany({
-      orderBy: { created_at: "desc" },
+      orderBy: { created_at: "asc" },
       include: { flashcards: true },
     });
   }
@@ -32,21 +32,18 @@ class SalaRepository {
   public async readById(id: number) {
     return this.repository.findUnique({
       where: { id },
-      include: { flashcards: true },
+      include: {
+        flashcards: {
+          orderBy: { id: "asc" },
+        }
+      },
     });
   }
 
   public async update(id: number, data: UpdateSalaDto) {
-    const { flashcards, ...salaData } = data;
     return this.repository.update({
       where: { id },
-      data: {
-        ...salaData,
-        flashcards: flashcards?.length
-          ? { deleteMany: {}, create: flashcards }
-          : undefined,
-      },
-      include: { flashcards: true },
+      data,
     });
   }
 

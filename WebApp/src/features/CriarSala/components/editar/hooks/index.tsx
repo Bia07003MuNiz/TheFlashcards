@@ -3,14 +3,16 @@ import { useForm, useFieldArray } from 'react-hook-form';
 import { useEffect } from 'react';
 import { useSalas } from './queryes';
 import { z } from 'zod';
-import type { SalaListagem } from '@features/CriarSala/services';
+import type { EditarSalaComFlashcardsDto, SalaListagem } from '@features/CriarSala/services';
 
 const FlashcardTempSchema = z.object({
+    id: z.number().optional(),
     pergunta: z.string().optional(),
     resposta: z.string().optional(),
 });
 
 export const SalaSchema = z.object({
+    id: z.number().optional(),
     nome: z.string().min(1),
     descricao: z.string().optional(),
     turma: z.string().min(1),
@@ -31,6 +33,7 @@ export const SalaSchema = z.object({
 
     flashcards: z.array(
         z.object({
+            id: z.number().optional(),
             pergunta: z.string().min(1),
             resposta: z.string().min(1),
         })
@@ -65,6 +68,7 @@ export const useSalaController = (sala?: any, id?: number) => {
     useEffect(() => {
         if (sala) {
             reset({
+                id: sala.id,
                 nome: sala.nome,
                 descricao: sala.descricao,
                 turma: sala.turma,
@@ -78,13 +82,12 @@ export const useSalaController = (sala?: any, id?: number) => {
         }
     }, [sala, reset]);
 
-
     const handleSala = handleSubmit(async (data) => {
         if (!id) return;
 
-        const { flashcardTemp, ...rest } = data;
+        const { flashcards, flashcardTemp, id: _, ...rest } = data;
 
-        const payload = {
+        const payload: EditarSalaComFlashcardsDto = {
             ...rest,
             limite_tentativas: rest.permitir_tentativas
                 ? rest.limite_tentativas ?? null
@@ -93,7 +96,7 @@ export const useSalaController = (sala?: any, id?: number) => {
 
         await editar({
             id,
-            payload: data as unknown as SalaListagem,
+            payload,
         });
     });
 

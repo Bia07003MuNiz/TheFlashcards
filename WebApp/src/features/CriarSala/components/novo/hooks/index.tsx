@@ -2,6 +2,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { useSalas } from './queryes';
 import { z } from 'zod';
+import { useNavigate } from 'react-router-dom';
+import { rotas } from '@constants/rotas';
 
 const FlashcardTempSchema = z.object({
     pergunta: z.string().optional(),
@@ -40,6 +42,7 @@ export type CriarSalaComFlashcardsForm = z.infer<typeof SalaSchema>;
 
 export const useSalaController = () => {
     const { post } = useSalas();
+    const navigate = useNavigate();
 
     const {
         control,
@@ -78,8 +81,9 @@ export const useSalaController = () => {
         };
 
         await post(payload);
+        reset();
+        navigate(rotas.SALA);
     });
-
 
     return {
         handleSala,

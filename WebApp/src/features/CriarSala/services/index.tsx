@@ -41,12 +41,13 @@ export interface SalaListagem {
 }
 
 export interface EditarSalaComFlashcardsDto {
-  nome: string;
-  descricao: string;
-  turma: string;
-  instituicao_id: number;
-  professor_id: number;
-  flashcards: CriarFlashcardDto[];
+  nome?: string;
+  descricao?: string;
+  turma?: string;
+  ativa?: boolean;
+  permitir_tentativas?: boolean;
+  limite_tentativas?: number | null;
+  instituicao_id?: number;
 }
 
 class SalaService {
@@ -64,7 +65,7 @@ class SalaService {
   }
 
   async editar(id: number, dto: EditarSalaComFlashcardsDto): Promise<EditarSalaComFlashcardsDto> {
-    const { data } = await this.httpClient.patch<EditarSalaComFlashcardsDto>(`${this.path}/${id}`, dto);
+    const { data } = await this.httpClient.put<EditarSalaComFlashcardsDto>(`${this.path}/${id}`, dto);
     return data;
   }
 

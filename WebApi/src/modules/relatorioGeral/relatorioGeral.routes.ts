@@ -8,8 +8,17 @@ router
   .route("/")
   .post(Validator.create, Controller.create);
 
-router
-  .route("/sala/:sala_id")
-  .get(Controller.readBySalaId);
+
+router.get("/sala/:sala_id", Controller.getResumoSala);
+
+router.get(
+  "/sala/:sala_id/aluno/:aluno_id",
+  Controller.getTentativasAluno
+);
+
+router.get(
+  "/tentativa/:relatorio_id",
+  Controller.getDetalheTentativa
+);
 
 export default router;

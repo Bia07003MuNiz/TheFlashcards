@@ -1,10 +1,8 @@
-
 import { Request, Response } from "express";
 import Service from "./relatorioGeral.service";
 import { TryCatch } from "@decorators/try-catch.decorator";
 
-class RelatorioGeralController {
-
+class RelatoriosController {
   @TryCatch()
   async create(req: Request, res: Response) {
     const result = await Service.create(req.body);
@@ -12,11 +10,25 @@ class RelatorioGeralController {
   }
 
   @TryCatch()
-  public async readBySalaId(req: Request, res: Response) {
+  async getResumoSala(req: Request, res: Response) {
     const { sala_id } = req.params;
-    const relatorio = await Service.readBySalaId(+sala_id);
-    res.status(200).json(relatorio);
+    const result = await Service.getResumoSala(+sala_id);
+    res.status(200).json(result);
+  }
+
+  @TryCatch()
+  async getTentativasAluno(req: Request, res: Response) {
+    const { sala_id, aluno_id } = req.params;
+    const result = await Service.getTentativasAluno(+sala_id, +aluno_id);
+    res.status(200).json(result);
+  }
+
+  @TryCatch()
+  async getDetalheTentativa(req: Request, res: Response) {
+    const { relatorio_id } = req.params;
+    const result = await Service.getDetalheTentativa(+relatorio_id);
+    res.status(200).json(result);
   }
 }
 
-export default new RelatorioGeralController();
+export default new RelatoriosController();

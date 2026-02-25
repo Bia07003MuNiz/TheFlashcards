@@ -13,7 +13,7 @@ const router = Router();
 router.use("/instituicao", InstituicaoRoutes);
 router.use("/usuario", UsuarioRoutes);
 router.use("/sala", SalaRoutes);
-router.use("/relatorio-geral", RelatorioGeralRoutes);
+router.use("/relatorios", RelatorioGeralRoutes);
 router.use("/relatorio-aluno", RelatorioAlunoRoutes);
 router.use("/resposta-flashcard", RespostaFlashcardRoutes);
 router.use("/flashcard", FlashcardRoutes);

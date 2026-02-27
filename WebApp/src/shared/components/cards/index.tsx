@@ -84,16 +84,18 @@ export const CardItem: FC<CardItemProps> = ({
 interface CardsComponentProps {
     items: CardItemProps[];
     emptyState?: ReactNode;
+    className?: string;
 }
 
 export const CardsComponent: FC<CardsComponentProps> = ({
     items,
     emptyState,
+    className,
 }) => {
     if (!items.length) return <>{emptyState ?? null}</>;
 
     return (
-        <CardsContainer>
+        <CardsContainer className={className}>
             {items.map((item, index) => (
                 <CardItem key={index} {...item} />
             ))}

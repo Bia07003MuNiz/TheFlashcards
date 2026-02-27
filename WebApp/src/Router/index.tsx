@@ -5,6 +5,10 @@ import { LoginPagina } from '@features/login/pages';
 import { SalaPagina } from '@features/CriarSala/pages';
 import { NovaSala } from '@features/CriarSala/components/novo';
 import { SalaEditar } from '@features/CriarSala/components/editar/pages';
+import { RelatoriosProfessorPagina } from '@features/RelatorioProfessor/pages';
+import { ListaTentativasAluno } from '@features/RelatorioProfessor/components/CardsTentativas';
+import { TentativasDetalhes } from '@features/RelatorioProfessor/components/CardsTentativasDetalhes';
+import { ListaAluno } from '@features/RelatorioProfessor/components/cardsListaAluno';
 
 export const Router = () => {
   return (
@@ -19,6 +23,11 @@ export const Router = () => {
             <Route path="/sala" element={<SalaPagina />} />
             <Route path="/sala/novo" element={<NovaSala />} />
             <Route path="/sala/editar/:id" element={<SalaEditar />} />
+
+            <Route path="/relatorios-professor" element={<RelatoriosProfessorPagina />} />
+            <Route path="/relatorios-professor/:id" element={<ListaAluno />} />
+            <Route path="/relatorios-professor/:idSala/aluno/:idAluno" element={<ListaTentativasAluno />} />
+            <Route path="/relatorios-professor/tentativa/:id" element={<TentativasDetalhes />} />
 
           </Route>
         </Route>

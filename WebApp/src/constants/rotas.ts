@@ -1,20 +1,16 @@
 export const rotas = {
-  HOME: '/',
-  DASHBOARD: '/dashboard',
-  PAGAR: '/contas-a-pagar',
-  PAGARNOVO: '/contas-a-pagar/novo',
-  RECEBER: '/contas-a-receber',
-  RELATORIOS: '/relatorios',
-
-  FORNECEDORES: '/fornecedores',
-  GERENCIAL: '/gerencial',
-  NATUREZAS: '/naturezas',
-  BANCOS: '/bancos',
-  NOTIFICACOES: '/notificacoes',
-
   SALA: '/sala',
   SALA_NOVO: '/sala/novo',
   SALA_EDITAR: '/sala/editar/:id',
+
+  NOTAS: '/notas',
+  PERFIL: '/perfil ',
+
+  RELATORIOS_PROFESSOR: '/relatorios-professor',
+
+
+  RELATORIOS_ALUNO: '/relatorios-aluno',
+
 } as const;
 
 export const rotasDinamicas = {

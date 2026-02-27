@@ -58,7 +58,7 @@ export const Globals: FC<IGlobals> = ({ children }) => {
         main: '#1d4ed8',
       },
       secondary: {
-        main: '#2563eb',
+        main: '#432dd7',
       },
       bordaCinza: {
         main: '#E6EEF6',

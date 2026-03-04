@@ -17,7 +17,7 @@ export const Router = () => {
         <Route element={<AuthGuard isPrivate={false} />}>
           <Route path="/login" element={<LoginPagina />} />
         </Route>
-        <Route element={<AuthGuard isPrivate={false} />}>
+        <Route element={<AuthGuard isPrivate={true} />}>
           <Route element={<MenuNavegacao />}>
 
             <Route path="/sala" element={<SalaPagina />} />

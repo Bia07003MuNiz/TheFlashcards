@@ -13,7 +13,7 @@ export const AuthGuard: FC<AuthGuardProps> = ({ isPrivate }) => {
   }
 
   if (signIn && !isPrivate) {
-    return <Navigate to={'/'} replace />;
+    return <Navigate to={'/sala'} replace />;
   }
 
   return <Outlet />;

@@ -1,4 +1,4 @@
-
+import bcrypt from "bcryptjs";
 import DataSource from '@database/data-source';
 import { CreateUsuarioDto } from "./dtos/create.dto";
 import { UpdateUsuarioDto } from "./dtos/update.dto";
@@ -10,11 +10,18 @@ class UsuarioRepository {
   constructor() {
     this.repository = DataSource.usuario;
   }
+
   public async create(data: CreateUsuarioDto) {
+    const senhaHash = await bcrypt.hash(data.senha, 10);
+
     return await this.repository.create({
-      data,
+      data: {
+        ...data,
+        senha: senhaHash,
+      },
     });
   }
+
   public async read() {
     return await this.repository.findMany({
       orderBy: { created_at: "desc" },
@@ -34,12 +41,10 @@ class UsuarioRepository {
     });
   }
 
-
   public async delete(id: number) {
     return await this.repository.delete({
       where: { id },
     });
-
   }
 }
 

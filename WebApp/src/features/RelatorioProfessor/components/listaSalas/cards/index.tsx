@@ -9,7 +9,7 @@ import { Tipografias } from '@shared/components/tipografias';
 import { Chip } from '@mui/material';
 
 import { BookOpen, Eye, Pencil } from 'lucide-react';
-import { useSalas } from '@features/CriarSala/components/novo/hooks/queryes';
+import { useSalas } from '@features/criarSala/components/novo/hooks/queryes';
 
 export const Cards = () => {
   const { data = [], isLoading, isPending } = useSalas();

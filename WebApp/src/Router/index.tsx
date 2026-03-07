@@ -2,13 +2,13 @@ import { Navigate, Route, Routes, BrowserRouter } from 'react-router-dom';
 import { AuthGuard } from './AuthGuard';
 import { MenuNavegacao } from '@features/navegacao';
 import { LoginPagina } from '@features/login/pages';
-import { SalaPagina } from '@features/CriarSala/pages';
-import { NovaSala } from '@features/CriarSala/components/novo';
-import { SalaEditar } from '@features/CriarSala/components/editar/pages';
-import { RelatoriosProfessorPagina } from '@features/RelatorioProfessor/pages';
-import { ListaTentativasAluno } from '@features/RelatorioProfessor/components/CardsTentativas';
-import { TentativasDetalhes } from '@features/RelatorioProfessor/components/CardsTentativasDetalhes';
-import { ListaAluno } from '@features/RelatorioProfessor/components/cardsListaAluno';
+import { SalaPagina } from '@features/criarSala/pages';
+import { NovaSala } from '@features/criarSala/components/novo';
+import { SalaEditar } from '@features/criarSala/components/editar/pages';
+import { RelatoriosProfessorPagina } from '@features/relatorioProfessor/pages';
+import { ListaTentativasAluno } from '@features/relatorioProfessor/components/CardsTentativas';
+import { TentativasDetalhes } from '@features/relatorioProfessor/components/CardsTentativasDetalhes';
+import { ListaAluno } from '@features/relatorioProfessor/components/cardsListaAluno';
 
 export const Router = () => {
   return (

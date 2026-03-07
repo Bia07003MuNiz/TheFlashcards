@@ -5,7 +5,7 @@ import { BotaoCustomizado } from '@shared/components/botao';
 import { Tipografias } from '@shared/components/tipografias';
 import { Mail, TrendingUp, CircleCheckBig, CircleX, User } from 'lucide-react';
 
-import { useRelatorioBuscar } from '@features/RelatorioProfessor/hooks/queryes';
+import { useRelatorioBuscar } from '@features/relatorioProfessor/hooks/queryes';
 
 export const CardsListaAluno = () => {
   const { id } = useParams();

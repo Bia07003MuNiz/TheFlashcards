@@ -9,7 +9,6 @@ import type { FC } from 'react';
 import type { useSalaController } from '../../hooks';
 import { useSalas } from '../../hooks/queryes';
 import { BackDropCustomizado } from '@shared/components/backDrop';
-import { Configuracoes } from '@features/CriarSala/components/novo/components/corpo/configuracoes';
 import { InformacaoGeral } from './informacoesGerais';
 import { PerguntasERespostas } from './perguntaResposta';
 import { Pencil } from 'lucide-react';

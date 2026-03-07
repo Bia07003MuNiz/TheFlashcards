@@ -5,7 +5,7 @@ import { BackDropCustomizado } from '@shared/components/backDrop';
 import { Tipografias } from '@shared/components/tipografias';
 import { Chip } from '@mui/material';
 import { PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { useRelatorioBuscar } from '@features/RelatorioProfessor/hooks/queryes';
+import { useRelatorioBuscar } from '@features/relatorioProfessor/hooks/queryes';
 
 export const Grafico = () => {
   const { id } = useParams();

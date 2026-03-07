@@ -2,7 +2,7 @@ import relatorioService, {
     type ResumoGeralSala,
     type TentativaAluno,
     type DetalheTentativaResponse,
-} from '@features/RelatorioProfessor/services';
+} from '@features/relatorioProfessor/services';
 
 import { useQuery } from '@tanstack/react-query';
 

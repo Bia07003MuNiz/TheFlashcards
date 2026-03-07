@@ -3,7 +3,7 @@ import { Container, Conteudo, ConteudoInical } from './styles';
 import { ChevronLeft } from 'lucide-react';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { useRelatorioBuscar } from '@features/RelatorioProfessor/hooks/queryes';
+import { useRelatorioBuscar } from '@features/relatorioProfessor/hooks/queryes';
 
 export const Cabecalho = () => {
   const navigate = useNavigate();

@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import { CardBrancoConteudo, CardPerguntaeResposta, CirculoNumero, Container, ConteinerCardPergunta, Conteudo, StatusResposta } from './styles';
 import { BackDropCustomizado } from '@shared/components/backDrop';
 import { Tipografias } from '@shared/components/tipografias';
-import { useRelatorioBuscar } from '@features/RelatorioProfessor/hooks/queryes';
+import { useRelatorioBuscar } from '@features/relatorioProfessor/hooks/queryes';
 import { Grafico } from './grafico';
 import { CircleCheckBig, CircleX } from 'lucide-react';
 

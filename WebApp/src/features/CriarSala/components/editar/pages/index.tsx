@@ -1,9 +1,9 @@
 import { BackDropCustomizado } from '@shared/components/backDrop';
 import { useParams } from 'react-router-dom';
-import { useSalaController } from '@features/CriarSala/components/editar/hooks';
+import { useSalaController } from '@features/criarSala/components/editar/hooks';
 import { SalaEditarComponente } from '../components';
-import { useSalas } from '../hooks/queryes';
 import { Corpo } from '../pages/styles';
+import { useSalas } from '../hooks/queryes';
 export const SalaEditar = () => {
   const { id } = useParams<{ id: string }>();
 
@@ -41,6 +41,7 @@ export const SalaEditar = () => {
         fields={fields}
         handleSala={handleSala}
         setValue={setValue}
+        update={Date}
       />
 
       <BackDropCustomizado aberto={isLoadingBuscaUnica} />

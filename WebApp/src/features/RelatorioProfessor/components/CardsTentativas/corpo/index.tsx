@@ -22,7 +22,7 @@ import {
   CalendarDays,
 } from 'lucide-react';
 
-import { useRelatorioBuscar } from '@features/RelatorioProfessor/hooks/queryes';
+import { useRelatorioBuscar } from '@features/relatorioProfessor/hooks/queryes';
 
 export const CardsTentativas = () => {
   const { idSala, idAluno } = useParams();

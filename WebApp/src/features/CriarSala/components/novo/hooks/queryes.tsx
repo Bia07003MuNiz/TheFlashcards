@@ -1,4 +1,4 @@
-import salaService, { type SalaListagem } from '@features/CriarSala/services';
+import salaService, { type SalaListagem } from '@features/criarSala/services';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { snackBar } from '@utils/SnackBar';
 import instituicaoService from '@features/instituicoes/services';

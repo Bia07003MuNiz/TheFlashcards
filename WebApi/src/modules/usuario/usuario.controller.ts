@@ -34,6 +34,13 @@ class UsuarioController {
     await Service.delete(+req.params.id);
     res.status(204).send();
   }
+
+  @TryCatch()
+  async BuscarMeuPerfil(req: Request, res: Response) {
+    const { id } = (req as any).user;
+    const usuario = await Service.BuscarMeuPerfil(id);
+    res.status(200).json(usuario);
+  }
 }
 
 export default new UsuarioController();

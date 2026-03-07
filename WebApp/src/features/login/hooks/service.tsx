@@ -20,8 +20,8 @@ export const useLoginServiceHooks = () => {
       snackBar(error?.response?.data?.error, 'error');
     },
     onSuccess: (dto) => {
-      signInHandler(dto?.data);
-    },
+      signInHandler(dto?.data?.token);
+    }
   });
 
   return { logar, estaLogando };

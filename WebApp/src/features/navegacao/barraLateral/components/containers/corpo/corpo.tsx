@@ -8,12 +8,13 @@ import { BuscarIcon } from '@shared/components/botao/icons';
 import { Bell, ChartBarStacked, FolderKanban, Landmark, LogOut, Truck } from 'lucide-react';
 import { Avatar, IconButton } from '@mui/material';
 import useAuth from '@contexts/AuthContext';
-// import { useMeuPerfil } from '@features/navegacao/barraLateral/hooks/useMeuPerfil';
-// import { useNotificacoes } from '@features/notificacoes/contexts';
+import { useMeuPerfil } from '@features/navegacao/barraLateral/hooks/useMeuPerfil';
 
 export const Corpo = () => {
     const { rotas, isRotaAtiva, navegarAte } = useRotas();
-    // const { meuPerfil } = useMeuPerfil();
+    const { meuPerfil } = useMeuPerfil();
+    const isProfessor = meuPerfil?.role === "PROFESSOR";
+
     const { signOutHandler } = useAuth();
 
 
@@ -31,29 +32,37 @@ export const Corpo = () => {
         <Container>
             <LogoPrincipal />
             <ItemsDaSidebar>
-                <BotaoCustomizado.BotaoSidebar
-                    estaAtivo={rotaAtual.salas}
-                    titulo="Salas"
-                    variant="text"
-                    startIcon={<HomeIcon />}
-                    onClick={() => navegarAte(rotas.SALA)}
-                />
+                {isProfessor && (
+                    <>
+                        <BotaoCustomizado.BotaoSidebar
+                            estaAtivo={rotaAtual.salas}
+                            titulo="Salas"
+                            variant="text"
+                            startIcon={<HomeIcon />}
+                            onClick={() => navegarAte(rotas.SALA)}
+                        />
 
-                <BotaoCustomizado.BotaoSidebar
-                    estaAtivo={rotaAtual.relatorioProfessor}
-                    titulo="Relatório"
-                    variant="text"
-                    startIcon={<DashBoardIcon />}
-                    onClick={() => navegarAte(rotas.RELATORIOS_PROFESSOR)}
-                />
+                        <BotaoCustomizado.BotaoSidebar
+                            estaAtivo={rotaAtual.relatorioProfessor}
+                            titulo="Relatório"
+                            variant="text"
+                            startIcon={<DashBoardIcon />}
+                            onClick={() => navegarAte(rotas.RELATORIOS_PROFESSOR)}
+                        />
+                    </>
+                )}
 
-                <BotaoCustomizado.BotaoSidebar
-                    estaAtivo={rotaAtual.relatorioAluno}
-                    titulo="Relatório"
-                    variant="text"
-                    startIcon={<DashBoardIcon />}
-                    onClick={() => navegarAte(rotas.RELATORIOS_ALUNO)}
-                />
+                {!isProfessor && (
+                    <>
+                        <BotaoCustomizado.BotaoSidebar
+                            estaAtivo={rotaAtual.relatorioAluno}
+                            titulo="Relatório"
+                            variant="text"
+                            startIcon={<DashBoardIcon />}
+                            onClick={() => navegarAte(rotas.RELATORIOS_ALUNO)}
+                        />
+                    </>
+                )}
 
                 <BotaoCustomizado.BotaoSidebar
                     estaAtivo={rotaAtual.notas}

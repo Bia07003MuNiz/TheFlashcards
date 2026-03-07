@@ -46,6 +46,19 @@ class UsuarioRepository {
       where: { id },
     });
   }
+
+  public async BuscarMeuPerfil(id: number) {
+    return await this.repository.findUnique({
+      where: { id },
+      select: {
+        id: true,
+        nome: true,
+        email: true,
+        role: true,
+        created_at: true,
+      },
+    });
+  }
 }
 
 export default new UsuarioRepository();

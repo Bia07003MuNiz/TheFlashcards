@@ -29,6 +29,10 @@ class UsuarioService {
   public async delete(id: number) {
     return await this.repository.delete(id);
   }
+
+  public async BuscarMeuPerfil(id: number) {
+    return await this.repository.BuscarMeuPerfil(id);
+  }
 }
 
 export default new UsuarioService();

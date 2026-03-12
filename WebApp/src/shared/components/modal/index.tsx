@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Modal, Box, Typography, IconButton } from '@mui/material';
+import { Modal, Box, styled, IconButton } from '@mui/material';
 import { X } from 'lucide-react';
+import { Tipografias } from '../tipografias';
 
 type ModalCustomizadoProps = {
     open: boolean;
@@ -19,37 +20,39 @@ export const ModalCustomizado: React.FC<ModalCustomizadoProps> = ({
 }) => {
     return (
         <Modal open={open} onClose={onClose}>
-            <Box
-                sx={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    width,
-                    bgcolor: 'background.paper',
-                    borderRadius: 2,
-                    boxShadow: 24,
-                    p: 4,
-                }}
-            >
+            <ModalContainer width={width}>
                 {title && (
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            justifyContent: 'space-between',
-                            alignItems: 'center',
-                            mb: 2,
-                        }}
-                    >
-                        <Typography variant="h6">{title}</Typography>
+                    <CabecalhoContainer                    >
+                        <Tipografias.LegendaMedio>{title}</Tipografias.LegendaMedio>
                         <IconButton onClick={onClose}>
                             <X size={20} />
                         </IconButton>
-                    </Box>
+                    </CabecalhoContainer>
                 )}
 
                 {children}
-            </Box>
+            </ModalContainer>
         </Modal>
     );
 };
+
+export const ModalContainer = styled(Box, {
+    shouldForwardProp: (prop) => prop !== "width",
+}) <{ width?: number | string }>`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: ${({ width }) => (typeof width === "number" ? `${width}px` : width)};
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 11px 15px rgba(0,0,0,0.2);
+  padding: 24px;
+`;
+
+export const CabecalhoContainer = styled(Box)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+`;

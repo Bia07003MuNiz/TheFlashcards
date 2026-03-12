@@ -9,6 +9,7 @@ import { RelatoriosProfessorPagina } from '@features/relatorioProfessor/pages';
 import { ListaTentativasAluno } from '@features/relatorioProfessor/components/CardsTentativas';
 import { TentativasDetalhes } from '@features/relatorioProfessor/components/CardsTentativasDetalhes';
 import { ListaAluno } from '@features/relatorioProfessor/components/cardsListaAluno';
+import { NotasPagina } from '@features/notas/pages';
 
 export const Router = () => {
   return (
@@ -31,6 +32,9 @@ export const Router = () => {
             <Route path="/relatorios-professor/:id" element={<ListaAluno />} />
             <Route path="/relatorios-professor/:idSala/aluno/:idAluno" element={<ListaTentativasAluno />} />
             <Route path="/relatorios-professor/tentativa/:id" element={<TentativasDetalhes />} />
+
+            <Route path="/notas" element={<NotasPagina />} />
+
 
           </Route>
         </Route>

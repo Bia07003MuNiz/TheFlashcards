@@ -9,26 +9,12 @@ type InputTextoProps = TextFieldProps & {
 export const InputTexto = React.forwardRef<
   HTMLInputElement | HTMLTextAreaElement,
   InputTextoProps
->(({ label, error, helperText, placeholder, maxLength = 1000, value, onChange, ...props }, ref) => {
-  const [textoAtual, setTextoAtual] = React.useState((value as string) || '');
-
-  React.useEffect(() => {
-    setTextoAtual((value as string) || '');
-  }, [value]);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setTextoAtual(e.target.value);
-    onChange?.(e);
-  };
-
-  // Sincroniza o valor interno quando o valor controlado do RHF muda (ex.: reset())
-  React.useEffect(() => {
-    setTextoAtual((value as string) || '');
-  }, [value]);
+>(({ label, error, helperText, placeholder, maxLength = 1000, ...props }, ref) => {
 
   return (
     <Container>
       <Label>{label}</Label>
+
       <StyledTextField
         multiline
         minRows={3}
@@ -37,15 +23,12 @@ export const InputTexto = React.forwardRef<
         error={!!error}
         helperText={error ? helperText : ''}
         inputRef={ref}
-        value={textoAtual}
-        onChange={handleChange}
         inputProps={{ maxLength }}
         {...props}
       />
     </Container>
   );
 });
-
 
 const Container = styled(Box)`
   width: 100%;

@@ -8,6 +8,7 @@ import RespostaFlashcardRoutes from "./respostaFlashcard/respostaFlashcard.route
 import RelatorioAlunoRoutes from "./relatorioAluno/relatorioAluno.routes";
 import FlashcardRoutes from "./flashcard/flashcard.routes";
 import AutentificacaoRoutes from "./auth/auth.routes";
+import NotasRoutes from "./notas/notas.routes";
 
 const router = Router();
 
@@ -19,5 +20,6 @@ router.use("/relatorio-aluno", RelatorioAlunoRoutes);
 router.use("/resposta-flashcard", RespostaFlashcardRoutes);
 router.use("/flashcard", FlashcardRoutes);
 router.use("/autenticacao", AutentificacaoRoutes)
+router.use("/notas", NotasRoutes)
 
 export default router;

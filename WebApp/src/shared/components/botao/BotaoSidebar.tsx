@@ -60,9 +60,9 @@ export const BotaoCustomizado = styled(Button, {
   ${({ estaAtivo }) =>
     estaAtivo &&
     css`
-      background: #FDEFE7;
+      background: #4f39f6;
       margin-left: auto;
-      color: #EA5B0B;
+      color: #fff;
       font-weight: 600;
     `}
 `;

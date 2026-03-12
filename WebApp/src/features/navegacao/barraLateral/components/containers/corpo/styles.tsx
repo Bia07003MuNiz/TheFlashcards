@@ -99,7 +99,7 @@ export const BadgeContador = styled(Box)`
   padding: 2px 6px;
   min-width: 18.77px;
   height: 16px;
-  background: #EA580C;
+  background: #432dd7;
   border-radius: 10px;
   font-weight: 700;
   font-size: 10px;

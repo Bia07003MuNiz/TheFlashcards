@@ -4,7 +4,7 @@ export const rotas = {
   SALA_EDITAR: '/sala/editar/:id',
 
   NOTAS: '/notas',
-  PERFIL: '/perfil ',
+  PERFIL: '/perfil',
 
   RELATORIOS_PROFESSOR: '/relatorios-professor',
 

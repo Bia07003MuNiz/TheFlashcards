@@ -15,7 +15,7 @@ export const TabelaVazia = styled(Box)`
   width: 100%;
   height: 100%;
   display: flex;
-  margin-top:90px;
+  margin-top: 50px;
   flex-direction: column;
   align-items: center;
   justify-content: center;

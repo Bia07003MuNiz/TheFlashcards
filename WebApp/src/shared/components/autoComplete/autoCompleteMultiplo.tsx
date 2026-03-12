@@ -81,7 +81,6 @@ export const AutoCompleteMultiplo = <T extends BaseOption>({
     </Container>
   );
 };
-
 const Container = styled(Box)`
   width: 100%;
   display: flex;
@@ -91,43 +90,55 @@ const Container = styled(Box)`
 `;
 
 const Label = styled(Typography)`
-  font-weight: 700;
-  font-size: 13px;
+  font-weight: 600;
+  font-size: 14px;
   line-height: 16px;
-  color: #6b7280;
+  color: #334155;
 `;
+
 
 const StyledTextField = styled(TextField) <TextFieldProps>`
   & .MuiOutlinedInput-root {
-
-    min-height: 42px;
-    height: auto; 
-    padding: 2px 6px;
-    border-radius: 8px;
+    min-height: 40px;
+    padding: 8px;
+    border-radius: 12px;
     background-color: #ffffff;
-    border: 1px solid #e6eef6;
-    color: #6b7280;
-    border: none;
-
-
-    &.Mui-disabled {
-      color: #9e9e9e;
-    }
+    border: 1px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 
     & .MuiOutlinedInput-notchedOutline {
+      border: none;
     }
 
-    & .MuiAutocomplete-tag {
-      margin: 2px;
-      height: 26px; 
-      font-size: 14px;
-      background-color: #ffffff; 
+    &:hover {
+      border-color: #cbd5e1;
+    }
+
+    &.Mui-focused {
+      border-color: #3b82f6;
     }
   }
 
   & .MuiInputBase-input {
-    padding: 4px 6px !important; 
-    min-width: 30px; 
+    padding: 0;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 16px;
+
+    &::placeholder {
+      color: #94a3b8;
+      opacity: 1;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 16px;
+    }
+  }
+
+  & .MuiInputAdornment-root {
+    margin: 0;
+    padding-right: 12px;
   }
 
   & .MuiFormHelperText-root {

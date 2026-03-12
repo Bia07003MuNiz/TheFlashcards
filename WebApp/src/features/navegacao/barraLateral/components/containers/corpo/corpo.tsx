@@ -1,12 +1,10 @@
 import { BotaoCustomizado } from '@shared/components/botao';
-import { HomeIcon, LogoPrincipal, DashBoardIcon, ApagarIcon, AReceberIcon, RelatoriosIcon, ConfiguracoesIcon } from '../../icons';
-import { AreaDoUsuario, BadgeContador, Container, ContainerDoInput, Footer, ItemsDaSidebar } from './styles';
+import { HomeIcon, LogoPrincipal, DashBoardIcon } from '../../icons';
+import { AreaDoUsuario, Container, Footer, ItemsDaSidebar } from './styles';
 import { useRotas } from '@hooks/useRotas';
 import { useMemo } from 'react';
-import { InputCustomizado } from '@shared/components/input';
-import { BuscarIcon } from '@shared/components/botao/icons';
-import { Bell, ChartBarStacked, FolderKanban, Landmark, LogOut, Truck } from 'lucide-react';
-import { Avatar, IconButton } from '@mui/material';
+import { FolderKanban, LogOut, User } from 'lucide-react';
+import { IconButton } from '@mui/material';
 import useAuth from '@contexts/AuthContext';
 import { useMeuPerfil } from '@features/navegacao/barraLateral/hooks/useMeuPerfil';
 
@@ -71,12 +69,11 @@ export const Corpo = () => {
                     startIcon={<FolderKanban />}
                     onClick={() => navegarAte(rotas.NOTAS)}
                 />
-
                 <BotaoCustomizado.BotaoSidebar
                     estaAtivo={rotaAtual.perfil}
                     titulo="Perfil"
                     variant="text"
-                    startIcon={<ChartBarStacked />}
+                    startIcon={<User />}
                     onClick={() => navegarAte(rotas.PERFIL)}
                 />
 

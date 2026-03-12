@@ -55,7 +55,9 @@ class UsuarioRepository {
         nome: true,
         email: true,
         role: true,
-        created_at: true,
+        data_nascimento: true,
+        created_at: true, 
+        instituicao_id:true,
       },
     });
   }

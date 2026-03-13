@@ -11,6 +11,8 @@ import { TentativasDetalhes } from '@features/relatorioProfessor/components/Card
 import { ListaAluno } from '@features/relatorioProfessor/components/cardsListaAluno';
 import { NotasPagina } from '@features/notas/pages';
 import { MeuPerfilPagina } from '@features/perfil/pages';
+import { ResponderSalaPagina } from '@features/responderFlashcards/pages';
+import { ResponderFlashcards } from '@features/responderFlashcards/components/responderFlashcards';
 
 export const Router = () => {
   return (
@@ -37,6 +39,9 @@ export const Router = () => {
             <Route path="/notas" element={<NotasPagina />} />
 
             <Route path="/perfil" element={<MeuPerfilPagina />} />
+            
+            <Route path="/responder-sala" element={<ResponderSalaPagina />} />
+            <Route path="/responder-sala/:id" element={<ResponderFlashcards />} />
 
 
           </Route>

@@ -18,6 +18,7 @@ export const Corpo = () => {
             salas: isRotaAtiva(rotas.SALA),
             relatorioProfessor: isRotaAtiva(rotas.RELATORIOS_PROFESSOR),
             relatorioAluno: isRotaAtiva(rotas.RELATORIOS_ALUNO),
+            responderSala: isRotaAtiva(rotas.RESPONDER_SALA),
             notas: isRotaAtiva(rotas.NOTAS),
             perfil: isRotaAtiva(rotas.PERFIL),
         };
@@ -62,11 +63,19 @@ export const Corpo = () => {
 
                     {!isProfessor && (
                         <>
+                        <BotaoCustomizado.BotaoSidebar
+                                estaAtivo={rotaAtual.responderSala}
+                                titulo="Responder Sala"
+                                variant="text"
+                                startIcon={<GalleryVerticalEnd  size={20} />}
+                                onClick={() => navegarAte(rotas.RESPONDER_SALA)}
+                            />
+
                             <BotaoCustomizado.BotaoSidebar
                                 estaAtivo={rotaAtual.relatorioAluno}
                                 titulo="Relatório"
                                 variant="text"
-                                startIcon={<GalleryVerticalEnd  size={20} />}
+                                startIcon={<ChartColumn size={20} />}
                                 onClick={() => navegarAte(rotas.RELATORIOS_ALUNO)}
                             />
                         </>

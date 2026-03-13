@@ -10,7 +10,8 @@ export const rotas = {
 
 
   RELATORIOS_ALUNO: '/relatorios-aluno',
-
+  RESPONDER_SALA: '/responder-sala',
+  
 } as const;
 
 export const rotasDinamicas = {

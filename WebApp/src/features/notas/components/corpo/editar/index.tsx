@@ -1,6 +1,6 @@
 import { ContainerBotao, InputContainer, Label, PrioridadesContainer } from './styles';
 import { InputCustomizado } from '@shared/components/input';
-import { Plus } from 'lucide-react';
+import { Pencil } from 'lucide-react';
 import { Controller } from 'react-hook-form';
 import { useNotasController } from './hooks';
 import { BotaoCustomizado } from '@shared/components/botao';
@@ -72,7 +72,7 @@ export const NotasEditar = ({ onFechar, nota }: NotasEditarProps) => {
 
         <ContainerBotao className='botaoCustomizado'>
           <BotaoCustomizado.BotaoSecundario className='botaoCustomizado' titulo='Cancelar' onClick={onFechar} />
-          <BotaoCustomizado.BotaoPrimario className='botaoCustomizado' titulo='Criar Sala' startIcon={<Plus size={20} />} onClick={handleNotas} />
+          <BotaoCustomizado.BotaoPrimario className='botaoCustomizado' titulo='Editar Nota' startIcon={<Pencil size={20} />} onClick={handleNotas} />
         </ContainerBotao>
 
       </InputContainer>

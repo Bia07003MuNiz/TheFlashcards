@@ -88,7 +88,7 @@ export const CardsTentativas = () => {
                   </div>
 
                   <div className="boxTentativa">
-                    <CalendarDays size={18} color="#4f39f6" />
+                    <CalendarDays size={18} color="#432dd7" />
                     <span>
                       {new Date(item.data).toLocaleString()}
                     </span>

@@ -71,7 +71,7 @@ export const InfoPrincipal = styled(Box)`
     justify-content: center;
     font-weight: 700;
     font-size: 22px;
-    color: #4f39f6;
+    color: #432dd7;
   }
 
  .dados {

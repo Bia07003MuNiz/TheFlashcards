@@ -122,7 +122,7 @@ export const CardListaPerguntaAdicionado = styled(Box)`
     .numero-flashcard {
       font-weight: 600;
       font-size: 14px;
-      color: #4f39f6;
+      color: #432dd7;
     }
   }
 

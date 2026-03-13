@@ -23,7 +23,7 @@ export const Configuracoe: FC<Props> = ({ control, errors, watch }) => {
       <CardsContainerConfiguracoes>
         <div className="textos">
           <BlocoAzulIcon>
-            <SlidersHorizontal size={20} color="#4f39f6" />
+            <SlidersHorizontal size={20} color="#432dd7" />
           </BlocoAzulIcon>
 
           <Tipografias.LegendaMedio>Configurações</Tipografias.LegendaMedio>

@@ -55,7 +55,7 @@ export const Globals: FC<IGlobals> = ({ children }) => {
 
     palette: {
       primary: {
-        main: '#1d4ed8',
+        main: '#432dd7',
       },
       secondary: {
         main: '#432dd7',
@@ -161,7 +161,7 @@ const GlobalStyles = () => (
         width: '0.3em',
       },
       '::-webkit-scrollbar-thumb': {
-        backgroundColor: '#1d4ed8',
+        backgroundColor: '#432dd7',
         borderRadius: '10px',
       },
 

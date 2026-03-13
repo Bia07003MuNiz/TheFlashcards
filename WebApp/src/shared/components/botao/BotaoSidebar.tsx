@@ -43,7 +43,7 @@ export const BotaoCustomizado = styled(Button, {
   padding: 8px 12px;
   gap: 8px;
   height: 40px;
-  border-radius: 6px;
+  border-radius: 12px;
   justify-content: flex-start;
 
 
@@ -60,7 +60,7 @@ export const BotaoCustomizado = styled(Button, {
   ${({ estaAtivo }) =>
     estaAtivo &&
     css`
-      background: #4f39f6;
+      background: #432dd7;
       margin-left: auto;
       color: #fff;
       font-weight: 600;

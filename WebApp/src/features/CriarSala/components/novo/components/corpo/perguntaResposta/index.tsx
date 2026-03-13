@@ -51,7 +51,7 @@ export const PerguntasERespostas = () => {
     <CardsContainerFlashcards>
       <div className="textos">
         <BlocoAzulIcon>
-          <BookOpen size={20} color="#4f39f6" />
+          <BookOpen size={20} color="#432dd7" />
         </BlocoAzulIcon>
         <Tipografias.LegendaMedio>Flashcards</Tipografias.LegendaMedio>
       </div>
@@ -136,7 +136,7 @@ export const PerguntasERespostas = () => {
                 <div className="acoes">
                   <Pencil
                     size={20}
-                    color="#4f39f6"
+                    color="#432dd7"
                     onClick={() => iniciarEdicao(item, index)}
                   />
 

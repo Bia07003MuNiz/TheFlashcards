@@ -44,7 +44,7 @@ export const PerguntasERespostas: FC<Props> = ({ salaId, flashcards }) => {
       <CardsContainerFlashcards>
         <div className="textos">
           <BlocoAzulIcon>
-            <BookOpen size={20} color="#4f39f6" />
+            <BookOpen size={20} color="#432dd7" />
           </BlocoAzulIcon>
           <Tipografias.LegendaMedio>Flashcards</Tipografias.LegendaMedio>
         </div>
@@ -99,7 +99,7 @@ export const PerguntasERespostas: FC<Props> = ({ salaId, flashcards }) => {
                   <div className="acoes">
                     <Pencil
                       size={20}
-                      color="#4f39f6"
+                      color="#432dd7"
                       onClick={() => {
                         console.log('flashcard clicado para editar:', {
                           id: item.id,

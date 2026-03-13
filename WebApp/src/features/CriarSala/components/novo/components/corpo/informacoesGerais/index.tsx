@@ -16,7 +16,7 @@ export const InformacoesGerais = () => {
       <CardsContainerInformacaoGeral>
         <div className="textos">
           <BlocoAzulIcon>
-            <Info size={20} color="#4f39f6" />
+            <Info size={20} color="#432dd7" />
           </BlocoAzulIcon>
 
           <Tipografias.LegendaMedio>Informações Gerais</Tipografias.LegendaMedio>

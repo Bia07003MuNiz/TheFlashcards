@@ -59,7 +59,7 @@ export const CardsListaAluno = () => {
 
                   <Metricas>
                     <div className="boxTentativa">
-                      <TrendingUp size={18} color='#4f39f6' />
+                      <TrendingUp size={18} color='#432dd7' />
                       <span>{aluno.tentativas} Tentativas</span>
                     </div>
 

@@ -3,7 +3,7 @@ import { useForm, useFieldArray } from 'react-hook-form';
 import { useEffect } from 'react';
 import { useSalas } from './queryes';
 import { z } from 'zod';
-import type { EditarSalaComFlashcardsDto, SalaListagem } from '@features/criarSala/services';
+import type { EditarSalaComFlashcardsDto, SalaListagem } from '@features/sala/services';
 
 const FlashcardTempSchema = z.object({
     id: z.number().optional(),

@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
-import salaService, { type EditarSalaComFlashcardsDto } from '@features/criarSala/services';
+import salaService, { type EditarSalaComFlashcardsDto } from '@features/sala/services';
 import { snackBar } from '@utils/SnackBar';
 import instituicaoService from '@features/instituicoes/services';
 

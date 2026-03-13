@@ -1,6 +1,6 @@
 import { BackDropCustomizado } from '@shared/components/backDrop';
 import { useParams } from 'react-router-dom';
-import { useSalaController } from '@features/criarSala/components/editar/hooks';
+import { useSalaController } from '@features/sala/components/editar/hooks';
 import { SalaEditarComponente } from '../components';
 import { Corpo } from '../pages/styles';
 import { useSalas } from '../hooks/queryes';

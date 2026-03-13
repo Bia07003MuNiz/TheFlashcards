@@ -5,7 +5,7 @@ import { rotas } from '@constants/rotas';
 import { useNavigate } from 'react-router-dom';
 
 import { useParams } from 'react-router-dom';
-import { useSalas } from '@features/criarSala/components/novo/hooks/queryes';
+import { useSalas } from '@features/sala/components/novo/hooks/queryes';
 
 export const Cabecalho = () => {
   const navigate = useNavigate();

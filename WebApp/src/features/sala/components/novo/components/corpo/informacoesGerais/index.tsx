@@ -2,13 +2,13 @@ import { BlocoAzulIcon, CardsContainerInformacaoGeral, Divider, InputContainer }
 import { Tipografias } from '@shared/components/tipografias';
 import { InputCustomizado } from '@shared/components/input';
 import { Info } from 'lucide-react';
-import { useSalaController } from '../../../hooks/index';
 import { Controller } from 'react-hook-form';
 import { useSalas } from '../../../hooks/queryes';
 import { turmas } from '@utils/ListaTurma';
+import { useSalaContext } from '../../../hooks/salaContext';
 
 export const InformacoesGerais = () => {
-  const { register, control, errors, } = useSalaController();
+  const { register, control, errors, } = useSalaContext();
   const { instituicoes, estaCarregandoInstituicoes } = useSalas();
 
   return (

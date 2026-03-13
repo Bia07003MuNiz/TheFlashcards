@@ -40,8 +40,8 @@ export const CorpoNotas = () => {
                 <User size={28} color="#90a1b9" />
               </CirculoTabelaVazia>
 
-              <Tipografias.Titulo>Nenhum aluno encontrado </Tipografias.Titulo>
-              <Tipografias.Legenda>Esta sala ainda não possui alunos com tentativas registradas. </Tipografias.Legenda>
+              <Tipografias.Titulo>Nenhuma nota encontrada </Tipografias.Titulo>
+              <Tipografias.Legenda>Você ainda não possui notas registradas. </Tipografias.Legenda>
             </TabelaVazia>
           ) : (
             notasAtivas.map((nota) => {

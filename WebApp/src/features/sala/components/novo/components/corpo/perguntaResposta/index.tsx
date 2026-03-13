@@ -13,11 +13,11 @@ import { Tipografias } from '@shared/components/tipografias';
 import { InputCustomizado } from '@shared/components/input';
 import { BookOpen, Pencil, Plus, Trash2 } from 'lucide-react';
 import { BotaoCustomizado } from '@shared/components/botao';
-import { useSalaController } from '../../../hooks/index';
+import { useSalaContext } from '../../../hooks/salaContext';
 import { Controller } from 'react-hook-form';
 
 export const PerguntasERespostas = () => {
-  const { register, control, errors, watch, append, remove, update, fields, setValue } = useSalaController();
+  const { register, control, errors, watch, append, remove, update, fields, setValue } = useSalaContext();
   const [editIndex, setEditIndex] = React.useState<number | null>(null);
 
   const pergunta = watch('flashcardTemp.pergunta') || '';

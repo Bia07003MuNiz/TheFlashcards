@@ -3,12 +3,11 @@ import { BlocoAzulIcon, CardsContainerConfiguracoes, CardsInformacoesAdicionais,
 import { Tipografias } from '@shared/components/tipografias';
 import { InputCustomizado } from '@shared/components/input';
 import { Plus, SlidersHorizontal } from 'lucide-react';
-import { BotaoCustomizado } from '@shared/components/botao';
-import { useSalaController } from '../../../hooks/index';
+import { useSalaContext } from '../../../hooks/salaContext';
 import { Controller } from 'react-hook-form';
 
 export const Configuracoes = () => {
-  const { control, errors, watch } = useSalaController();
+  const { control, errors, watch } = useSalaContext();
 
   return (
     <>

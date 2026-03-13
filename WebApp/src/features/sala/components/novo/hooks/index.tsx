@@ -70,19 +70,19 @@ export const useSalaController = () => {
     const PROFESSOR_FIXO_ID = 1;
 
     const handleSala = handleSubmit(async (data) => {
-        const { flashcardTemp, ...rest } = data;
+    const { flashcardTemp, ...rest } = data;
 
-        const payload = {
-            ...rest,
-            professor_id: PROFESSOR_FIXO_ID,
-            limite_tentativas: rest.permitir_tentativas
-                ? rest.limite_tentativas ?? null
-                : null,
-        };
+    const payload = {
+      ...rest,
+      professor_id: PROFESSOR_FIXO_ID,
+      limite_tentativas: rest.permitir_tentativas
+        ? rest.limite_tentativas ?? null
+        : null,
+    };
 
-        await post(payload);
-        reset();
-        navigate(rotas.SALA);
+    await post(payload);
+    reset();
+    navigate(rotas.SALA);
     });
 
     return {

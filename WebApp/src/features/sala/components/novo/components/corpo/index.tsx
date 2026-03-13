@@ -1,6 +1,5 @@
 import { ColunaDireita, ColunaEsquerda, ContainerBotao, ContainerLayout } from './styles';
 import { BotaoCustomizado } from '@shared/components/botao';
-import { useSalaController } from '../../hooks/index';
 import { Plus } from 'lucide-react';
 import { useSalas } from '../../hooks/queryes';
 import { BackDropCustomizado } from '@shared/components/backDrop';
@@ -9,13 +8,14 @@ import { InformacoesGerais } from './informacoesGerais';
 import { Configuracoes } from './configuracoes';
 import { useNavigate } from 'react-router-dom';
 import { rotas } from '@constants/rotas';
+import { useSalaContext } from '../../hooks/salaContext';
 
 export const CorpoNovaSala = () => {
 
-  const { handleSala, } = useSalaController();
+  const { handleSala, } = useSalaContext();
   const { estaCarregandoInstituicoes } = useSalas();
   const navigate = useNavigate();
-
+  
   return (
     <ContainerLayout>
       <ColunaEsquerda>

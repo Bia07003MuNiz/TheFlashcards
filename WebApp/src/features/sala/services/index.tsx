@@ -75,7 +75,7 @@ class SalaService {
   }
 
   async listarUnico(id: number) {
-    const { data } = await this.httpClient.get<SalaListagem>(`${this.path}/${id}`,);
+    const { data } = await this.httpClient.get<SalaListagem>(`${this.path}/${id}`);
     return data;
   }
 }

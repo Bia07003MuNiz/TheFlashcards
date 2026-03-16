@@ -5,26 +5,22 @@ export const Container = styled(Box)`
   padding: 16px;
 `;
 
-export const Header = styled(Box)`
+export const Cabecalho = styled(Box)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-`;
 
-export const Titulo = styled(Box)`
-  font-size: 20px;
-  font-weight: 600;
-`;
-
-export const Subtitulo = styled(Box)`
-  font-size: 14px;
-  color: #64748b;
+   .voltar{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+  }
 `;
 
 export const ProgressWrapper = styled(Box)`
   width: 200px;
 `;
-
 
 export const ProgressTrack = styled(Box)`
   width: 100%;
@@ -34,24 +30,19 @@ export const ProgressTrack = styled(Box)`
   overflow: hidden;
 `;
 
-
-export const ProgressFill = styled(Box)`
+export const ProgressFill = styled(Box)<{ progresso: number }>`
   height: 100%;
-  background: var(--primary);
+  background: ${({ progresso }) => progresso >= 100 ? '#432dd7' : 'var(--primary)'};
   border-radius: 12px;
-  transition: width 0.4s ease;
+  transition: width 0.4s ease, background 0.4s ease;
 `;
 
-
-
 export const CardWrapper = styled(Box)`
-  margin-top: 40px;
+  margin-top: 30px;
   perspective: 1000px;
-
   display: flex;
   justify-content: center;
 `;
-
 
 export const CardFlip = styled(Box)`
   position: relative;
@@ -61,17 +52,18 @@ export const CardFlip = styled(Box)`
   transform-style: preserve-3d;
   transition: transform 0.6s;
   cursor: pointer;
-`;
 
+  &.virado {
+    transform: rotateY(180deg);
+  }
+`;
 
 export const CardFace = styled(Box)`
   position: absolute;
   width: 100%;
   height: 100%;
-
   backface-visibility: hidden;
 `;
-
 
 export const CardBrancoConteudo = styled(Box)`
   width: 100%;
@@ -117,20 +109,6 @@ export const CardVerso = styled(Box)`
   gap: 16px;
 `;
 
-
-export const Label = styled(Box)`
-  font-size: 13px;
-  font-weight: 600;
-  color: #64748b;
-  letter-spacing: 1px;
-`;
-
-export const Pergunta = styled(Box)`
-  font-size: 28px;
-  font-weight: 600;
-  text-align: center;
-`;
-
 export const RotateText = styled(Box)`
   display: flex;
   align-items: center;
@@ -141,20 +119,33 @@ export const RotateText = styled(Box)`
 
 export const Botoes = styled(Box)`
   display: flex;
-  justify-content: space-between;
-`;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 30px;
+  gap: 16px;
 
+  .linha {
+    display: flex;
+    justify-content: center;
+    gap: 36px;
+    width: 100%;
+  }
+`;
 export const BotaoErro = styled(Box)`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
 
-  padding: 12px 20px;
+  width: 35%;
+  padding: 16px 24px;
   border-radius: 10px;
   border: 2px solid #f0565d;
   background: white;
   color: #f0565d;
   font-weight: 600;
+  font-size: 16px;
   cursor: pointer;
 
   &:hover {
@@ -165,9 +156,11 @@ export const BotaoErro = styled(Box)`
 export const BotaoAcerto = styled(Box)`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
 
-  padding: 12px 20px;
+  width: 35%;
+  padding: 16px 24px;
   border-radius: 10px;
   border: 2px solid #008136;
   background: #008136;
@@ -177,5 +170,24 @@ export const BotaoAcerto = styled(Box)`
 
   &:hover {
     background: #008035;
+  }
+`;
+export const BotaoFinalizar = styled(Box)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: 71.5%;
+  padding: 16px 24px;
+  border-radius: 10px;
+  background: ${({ theme }) => theme.palette.primary.main};
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
   }
 `;

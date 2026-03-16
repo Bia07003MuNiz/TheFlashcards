@@ -54,7 +54,7 @@ const TextoSimples = styled(Typography)`
 const LegendaSimples = styled(Typography)`
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 24px;
   color: #64748b;
 `;

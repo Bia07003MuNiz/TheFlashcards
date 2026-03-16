@@ -1,7 +1,6 @@
 // relatorioAluno.service.ts
 import RelatorioAlunoRepository from "./relatorioAluno.repository";
 import { CreateRelatorioAlunoDto } from "./dtos/create.dto";
-import RelatorioGeralRepository from "@modules/relatorioGeral/relatorioGeral.repository";
 
 class RelatorioAlunoService {
   private readonly repository;

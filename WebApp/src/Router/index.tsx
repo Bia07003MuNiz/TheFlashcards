@@ -13,6 +13,7 @@ import { NotasPagina } from '@features/notas/pages';
 import { MeuPerfilPagina } from '@features/perfil/pages';
 import { ResponderSalaPagina } from '@features/responderFlashcards/pages';
 import { ResponderFlashcards } from '@features/responderFlashcards/components/responderFlashcards';
+import { RelatorioResposta } from '@features/responderFlashcards/components/responderFlashcards/relatorioResposta';
 
 export const Router = () => {
   return (
@@ -42,7 +43,7 @@ export const Router = () => {
             
             <Route path="/responder-sala" element={<ResponderSalaPagina />} />
             <Route path="/responder-sala/:id" element={<ResponderFlashcards />} />
-
+            <Route path="/responder-sala/:id/relatorio" element={<RelatorioResposta />} />
 
           </Route>
         </Route>

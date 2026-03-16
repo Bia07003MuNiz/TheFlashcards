@@ -29,6 +29,15 @@ class RelatoriosRepository {
       },
     });
   }
+
+  async readBySalaId(sala_id: number) {
+  return this.repository.findFirst({
+    where: {
+      sala_id,
+    },
+  });
+}
+
   async getResumoSala(salaId: number) {
     return DataSource.relatorioAluno.groupBy({
       by: ["aluno_id"],

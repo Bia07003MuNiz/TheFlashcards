@@ -16,6 +16,7 @@ export const rotas = {
 
 export const rotasDinamicas = {
   PAGAREDITAR: (id: string) => `/contas-a-pagar/${id}`,
+   TENTATIVA_ALUNO: (id: string) => `/relatorios-aluno/tentativa/${id}`,
 };
 
 export type ChaveRota = keyof typeof rotas;

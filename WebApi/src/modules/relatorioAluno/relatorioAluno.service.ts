@@ -1,4 +1,3 @@
-// relatorioAluno.service.ts
 import RelatorioAlunoRepository from "./relatorioAluno.repository";
 import { CreateRelatorioAlunoDto } from "./dtos/create.dto";
 
@@ -25,9 +24,19 @@ class RelatorioAlunoService {
     return this.repository.delete(id);
   }
 
-  public async gerarRelatorioPorAluno(aluno_id: number, sala_id: number) {
-    return this.repository.gerarRelatorioPorAluno(aluno_id, sala_id);
+  public async gerarRelatorioSala(sala_id: number) {
+    return this.repository.gerarRelatorioSala(sala_id);
   }
+
+ public async buscarTentativaDetalhada(
+  tentativa_id: number,
+  usuario_id?: number
+) {
+  return this.repository.buscarTentativaDetalhada(
+    tentativa_id,
+    usuario_id
+  );
+}
 }
 
 export default new RelatorioAlunoService();

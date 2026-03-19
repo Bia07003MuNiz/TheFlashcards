@@ -23,13 +23,24 @@ class Controller {
   }
 
   @TryCatch()
-  public async readByAluno(req: Request, res: Response) {
-    const aluno_id = +req.params.aluno_id;
-    const sala_id = +req.params.sala_id;
-
-    const result = await Service.gerarRelatorioPorAluno(aluno_id, sala_id);
+  public async relatorioSala(req: Request, res: Response) {  // ✅ novo
+    const result = await Service.gerarRelatorioSala(+req.params.sala_id);
     res.status(200).json(result);
   }
+
+  @TryCatch()
+public async relatorioTentativaDetalhada(req: Request, res: Response) {
+  const tentativaId = +req.params.tentativa_id;
+
+  // se quiser usar usuário do token 👇
+ const usuarioId = (req as any).user.id;
+  const result = await Service.buscarTentativaDetalhada(
+    tentativaId,
+    usuarioId
+  );
+
+  res.status(200).json(result);
+}
 
   @TryCatch()
   public async delete(req: Request, res: Response) {

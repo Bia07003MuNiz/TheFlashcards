@@ -14,6 +14,9 @@ import { MeuPerfilPagina } from '@features/perfil/pages';
 import { ResponderSalaPagina } from '@features/responderFlashcards/pages';
 import { ResponderFlashcards } from '@features/responderFlashcards/components/responderFlashcards';
 import { RelatorioResposta } from '@features/responderFlashcards/components/responderFlashcards/relatorioResposta';
+import { RelatorioAlunoPagina } from '@features/relatorioAluno/pages';
+import { ListaTentativas } from '@features/relatorioAluno/components/CardsTentativas';
+import { TentativasDetalhesAluno } from '@features/relatorioAluno/components/CardsTentativasDetalhes';
 
 export const Router = () => {
   return (
@@ -44,6 +47,12 @@ export const Router = () => {
             <Route path="/responder-sala" element={<ResponderSalaPagina />} />
             <Route path="/responder-sala/:id" element={<ResponderFlashcards />} />
             <Route path="/responder-sala/:id/relatorio" element={<RelatorioResposta />} />
+
+            <Route path="/relatorios-aluno/" element={<RelatorioAlunoPagina />} />
+            <Route path="/relatorios-aluno/:idSala" element={<ListaTentativas />} />
+            <Route path="/relatorios-aluno/tentativa/:idTentativa" element={<TentativasDetalhesAluno />} />
+
+
 
           </Route>
         </Route>

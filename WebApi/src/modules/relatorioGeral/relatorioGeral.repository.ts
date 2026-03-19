@@ -30,11 +30,11 @@ class RelatoriosRepository {
     });
   }
 
-  async readBySalaId(sala_id: number) {
+  // relatorioGeral.repository.ts
+public async readBySalaId(sala_id: number) {
   return this.repository.findFirst({
-    where: {
-      sala_id,
-    },
+    where: { sala_id },
+    include: { sala: true }, // ✅ obrigatório para acessar .sala.nome
   });
 }
 

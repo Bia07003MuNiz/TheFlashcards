@@ -1,15 +1,5 @@
 import { Box, Button, css, styled } from '@mui/material';
 
-export const CardGrafico = styled(Box)`
-  width: 98%;
-  min-height: 300px;
-  padding: 24px;
-  background-color: #f8fafc; 
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
-`;
-
 export const Conteudo = styled(Box)`
   display: flex;
   gap: 4px;
@@ -22,7 +12,7 @@ export const ConteinerDireito = styled(Box)`
   display: flex;
   flex-direction: column;
   gap: 2;
-
+  justify-content: center;
   .pontuacao{
     font-size: 15px;
     font-weight: 400;
@@ -66,8 +56,6 @@ export const ConteinerAcerto = styled(Box)`
   padding: 10px;
   background-color: #f0fdf4;
   border: 2px solid #b9f8cf;
-
-
 `;
 
 export const ConteinerErro = styled(Box)`
@@ -86,4 +74,35 @@ export const ConteinerData = styled(Box)`
   display: flex;
   align-items: center;
   gap: 8px;
+`;
+
+export const ConteinerTextoGrafico = styled(Box)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const BoxGrafico = styled(Box)`
+  flex: 1;
+  min-width: 300px;
+`;
+
+export const Divider = styled('hr')`
+  width: 100%;
+  border: none;
+  border-top: 2px solid #f1f5f9;
+  margin-bottom: 8px;
+`;
+
+export const CardBrancoConteudo = styled(Box)`
+  width: 100%;
+  min-height: 300px;
+  padding: 24px;
+  background-color: #ffffff; 
+  border: 2px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 
+    0px 4px 6px rgba(0, 0, 0, 0.07),
+    0px 10px 20px rgba(0, 0, 0, 0.12),
+    0px 20px 40px rgba(0, 0, 0, 0.08);
 `;

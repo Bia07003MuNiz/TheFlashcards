@@ -1,20 +1,15 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { CardBrancoConteudo, CardPerguntaeResposta, CirculoNumero, Container, ConteinerCardPergunta, Conteudo, StatusResposta } from './styles';
 import { BackDropCustomizado } from '@shared/components/backDrop';
 import { Tipografias } from '@shared/components/tipografias';
-import { useRelatorioBuscar } from '@features/relatorioProfessor/hooks/queryes';
 import { Grafico } from './grafico';
 import { CircleCheckBig, CircleX } from 'lucide-react';
 import { useRelatorioAlunoBuscar } from '@features/relatorioAluno/hooks/queryes';
 
 export const CardsTentativasDetalhes = () => {
   const { idTentativa } = useParams();
-const navigate = useNavigate();
   const tentativaId = Number(idTentativa);
-
-
-
-const { tentativas, loadingTentativas } = useRelatorioAlunoBuscar(undefined, tentativaId);
+  const { tentativas, loadingTentativas } = useRelatorioAlunoBuscar(undefined, tentativaId);
 
   if (!tentativas) return null;
 
@@ -22,7 +17,7 @@ const { tentativas, loadingTentativas } = useRelatorioAlunoBuscar(undefined, ten
     <Container>
       <CardBrancoConteudo>
         <Conteudo>
-          <Tipografias.LegendaMedio>Resumo</Tipografias.LegendaMedio>
+
           <Grafico />
 
           <Tipografias.LegendaMedio>Detalhamento</Tipografias.LegendaMedio>

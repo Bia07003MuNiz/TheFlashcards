@@ -1,7 +1,6 @@
 import { Box, Button, css, styled } from '@mui/material';
 
 export const Container = styled(Box)`
-
 `;
 
 export const Conteudo = styled(Box)`
@@ -12,12 +11,7 @@ export const Conteudo = styled(Box)`
 
 export const CardBrancoConteudo = styled(Box)`
   width: 100%;
-  min-height: 450px;
   padding: 24px;
-  background-color: #ffffff; 
-  border: 2px solid #e2e8f0;
-  border-radius: 16px;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
 `;
 
 export const CardPerguntaeResposta = styled(Box, {

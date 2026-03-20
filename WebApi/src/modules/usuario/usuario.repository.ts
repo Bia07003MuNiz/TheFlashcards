@@ -11,38 +11,38 @@ class UsuarioRepository {
     this.repository = DataSource.usuario;
   }
 
-public async create(data: CreateUsuarioDto) {
-  if (data.role === "ALUNO" && data.instituicoes.length > 1) {
-    throw new Error("Aluno pode ter apenas uma instituição");
-  }
+  public async create(data: CreateUsuarioDto) {
+    if (data.role === "ALUNO" && data.instituicoes.length > 1) {
+      throw new Error("Aluno pode ter apenas uma instituição");
+    }
 
-  const senhaHash = await bcrypt.hash(data.senha, 10);
+    const senhaHash = await bcrypt.hash(data.senha, 10);
 
-  return await this.repository.create({
-    data: {
-      nome: data.nome,
-      email: data.email,
-      senha: senhaHash,
-      role: data.role,
-      status: data.status,
-      data_nascimento: data.data_nascimento,
-      celular: data.celular,
+    return await this.repository.create({
+      data: {
+        nome: data.nome,
+        email: data.email,
+        senha: senhaHash,
+        role: data.role,
+        status: data.status,
+        data_nascimento: data.data_nascimento,
+        celular: data.celular,
 
-      instituicoes: {
-        create: data.instituicoes.map((id) => ({
-          instituicaoId: id,
-        })),
-      },
-    },
-     include: {
-      instituicoes: {
-        include: {
-          instituicao: true,
+        instituicoes: {
+          create: data.instituicoes.map((id) => ({
+            instituicaoId: id,
+          })),
         },
       },
-    },
-  });
-}
+      include: {
+        instituicoes: {
+          include: {
+            instituicao: true,
+          },
+        },
+      },
+    });
+  }
 
   public async read() {
   return await this.repository.findMany({

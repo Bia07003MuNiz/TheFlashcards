@@ -6,7 +6,7 @@ export const ReadUsuarioSchema = z.object({
     email: z.string().optional(),
     role: z.enum(["ADMIN", "PROFESSOR", "ALUNO"]).optional(),
     status: z.enum(["ATIVO", "INATIVO"]).optional(),
-    instituicao_id: z.coerce.number().int().positive().optional(),
+    instituicoes: z.array(z.number().int().positive())
 });
 
 export type ReadUsuarioDto = z.infer<typeof ReadUsuarioSchema>;

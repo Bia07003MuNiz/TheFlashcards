@@ -38,30 +38,41 @@ model Instituicao {
   cidade      String
   estado      String
 
-  usuarios    Usuario[]
+  usuarios   UsuarioInstituicao[]
   salas       Sala[]
 
   created_at  DateTime @default(now())
 }
 
 model Usuario {
-  id                Int      @id @default(autoincrement())
-  nome              String
-  email             String   @unique
-  senha             String
-  role              Role
-  status            StatusUsuario @default(ATIVO)
-  data_nascimento   DateTime?
-  celular           String?
+  id              Int      @id @default(autoincrement())
+  nome            String
+  email           String   @unique
+  senha           String
+  role            Role
+  status          StatusUsuario @default(ATIVO)
+  data_nascimento DateTime?
+  celular         String?
 
-  instituicao_id    Int
-  instituicao       Instituicao @relation(fields: [instituicao_id], references: [id])
+  instituicoes    UsuarioInstituicao[]
 
-  salas_criadas     Sala[] @relation("ProfessorSalas")
-  relatorios        RelatorioAluno[]
+  salas_criadas   Sala[] @relation("ProfessorSalas")
+  relatorios      RelatorioAluno[]
 
-  created_at        DateTime @default(now())
-  notas             Nota[]
+  created_at      DateTime @default(now())
+  notas           Nota[]
+}
+
+model UsuarioInstituicao {
+  id             Int @id @default(autoincrement())
+
+  usuarioId      Int
+  instituicaoId  Int
+
+  usuario        Usuario     @relation(fields: [usuarioId], references: [id])
+  instituicao    Instituicao @relation(fields: [instituicaoId], references: [id])
+
+  @@unique([usuarioId, instituicaoId])
 }
 
 model Sala {

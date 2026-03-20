@@ -8,7 +8,7 @@ export const CreateUsuarioSchema = z.object({
   status: z.enum(["ATIVO", "INATIVO"]).optional(),
   data_nascimento: z.coerce.date().optional(),
   celular: z.string().optional(),
-  instituicao_id: z.number().int().positive(),
+  instituicoes: z.array(z.number().int().positive()),
 });
 
 export type CreateUsuarioDto = z.infer<typeof CreateUsuarioSchema>;

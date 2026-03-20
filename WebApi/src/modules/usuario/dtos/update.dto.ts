@@ -8,7 +8,7 @@ export const UpdateUsuarioSchema = z.object({
   status: z.enum(["ATIVO", "INATIVO"]).optional(),
   data_nascimento: z.coerce.date().optional(),
   celular: z.string().optional(),
-  instituicao_id: z.number().int().positive().optional(),
+  instituicoes: z.array(z.number().int().positive())
 });
 
 export type UpdateUsuarioDto = z.infer<typeof UpdateUsuarioSchema>;

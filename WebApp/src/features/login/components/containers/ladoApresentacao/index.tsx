@@ -5,9 +5,12 @@ import { BotaoCustomizado } from '@shared/components/botao';
 import { useLoginController } from '@features/login/hooks/formulario';
 import { BackDropCustomizado } from '@shared/components/backDrop';
 import { Mail, Lock, MoveRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { rotas } from '@constants/rotas';
 
 export const LadoApresentacao = () => {
   const { register, errors, handleLogar, estaLogando } = useLoginController();
+  const navigate = useNavigate();
 
   return (
     <Container>
@@ -45,9 +48,10 @@ export const LadoApresentacao = () => {
           <Divider />
           <div className="areaCadastro">
             <Tipografias.Legenda className='nao_tem_conta'>Não tem conta?</Tipografias.Legenda>
-            <Tipografias.Legenda className='criar_conta'>Criar conta</Tipografias.Legenda>
+            <Tipografias.Legenda className='criar_conta' onClick={() => navigate(rotas.CRIAR_CONTA)} >Criar conta</Tipografias.Legenda>
           </div>
         </Form>
+
         <BackDropCustomizado aberto={estaLogando} />
       </Conteudo>
     </Container>

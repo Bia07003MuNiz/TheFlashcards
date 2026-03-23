@@ -11,12 +11,15 @@ export const rotas = {
 
   RELATORIOS_ALUNO: '/relatorios-aluno',
   RESPONDER_SALA: '/responder-sala',
-  
+
+  LOGIN: '/login',
+  CRIAR_CONTA: '/criar-conta',
+
 } as const;
 
 export const rotasDinamicas = {
   PAGAREDITAR: (id: string) => `/contas-a-pagar/${id}`,
-   TENTATIVA_ALUNO: (id: string) => `/relatorios-aluno/tentativa/${id}`,
+  TENTATIVA_ALUNO: (id: string) => `/relatorios-aluno/tentativa/${id}`,
 };
 
 export type ChaveRota = keyof typeof rotas;

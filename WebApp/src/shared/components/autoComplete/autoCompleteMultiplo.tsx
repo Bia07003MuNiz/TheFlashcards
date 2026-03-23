@@ -8,7 +8,7 @@ import { Box, Typography, styled, type TextFieldProps } from '@mui/material';
 interface BaseOption {
   label: string;
   id?: string | number;
-  value?: string;
+  value?: string | number;
 }
 
 interface IAutoCompleteMultiplo<T extends BaseOption> {
@@ -81,13 +81,15 @@ export const AutoCompleteMultiplo = <T extends BaseOption>({
     </Container>
   );
 };
+
 const Container = styled(Box)`
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding-top: 10px;
+  min-width: 0;      /* importante para flexbox */
 `;
+
 
 const Label = styled(Typography)`
   font-weight: 600;
@@ -96,54 +98,50 @@ const Label = styled(Typography)`
   color: #334155;
 `;
 
-
 const StyledTextField = styled(TextField) <TextFieldProps>`
+  box-sizing: border-box;
+
   & .MuiOutlinedInput-root {
-    min-height: 40px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+
+    display: flex;
+    flex-wrap: nowrap;
+
     padding: 8px;
     border-radius: 12px;
-    background-color: #ffffff;
+    background-color: #fff;
     border: 1px solid #e5e7eb;
-    display: flex;
-    align-items: center;
-    gap: 12px;
+
+    overflow: hidden; /* impede expandir */
 
     & .MuiOutlinedInput-notchedOutline {
       border: none;
     }
-
-    &:hover {
-      border-color: #cbd5e1;
-    }
-
-    &.Mui-focused {
-      border-color: #3b82f6;
-    }
   }
 
-  & .MuiInputBase-input {
-    padding: 0;
-    font-size: 13px;
-    font-weight: 600;
-    line-height: 16px;
-
-    &::placeholder {
-      color: #94a3b8;
-      opacity: 1;
-      font-weight: 600;
-      font-size: 14px;
-      line-height: 16px;
-    }
+  /* CONTAINER DOS CHIPS */
+  & .MuiAutocomplete-inputRoot {
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    min-width: 0;
   }
 
-  & .MuiInputAdornment-root {
-    margin: 0;
-    padding-right: 12px;
+  /* INPUT */
+  & .MuiAutocomplete-input {
+    flex: 1 1 120px; /* base mínima */
+    min-width: 120px;
+    max-width: 100%;
   }
 
-  & .MuiFormHelperText-root {
-    margin-left: 0;
-    font-size: 12px;
-    color: #d32f2f;
+  /* CHIP */
+  & .MuiAutocomplete-tag {
+    max-width: calc(100% - 8px);
+    flex-shrink: 1;         /* NÃO deixa crescer */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 `;

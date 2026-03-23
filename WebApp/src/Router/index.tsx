@@ -17,6 +17,7 @@ import { RelatorioResposta } from '@features/responderFlashcards/components/resp
 import { RelatorioAlunoPagina } from '@features/relatorioAluno/pages';
 import { ListaTentativas } from '@features/relatorioAluno/components/CardsTentativas';
 import { TentativasDetalhesAluno } from '@features/relatorioAluno/components/CardsTentativasDetalhes';
+import { CriarContaPagina } from '@features/criarConta/pages';
 
 export const Router = () => {
   return (
@@ -26,6 +27,7 @@ export const Router = () => {
 
         <Route element={<AuthGuard isPrivate={false} />}>
           <Route path="/login" element={<LoginPagina />} />
+          <Route path="/criar-conta" element={<CriarContaPagina />} />
         </Route>
 
         <Route element={<AuthGuard isPrivate={true} />}>
@@ -43,7 +45,7 @@ export const Router = () => {
             <Route path="/notas" element={<NotasPagina />} />
 
             <Route path="/perfil" element={<MeuPerfilPagina />} />
-            
+
             <Route path="/responder-sala" element={<ResponderSalaPagina />} />
             <Route path="/responder-sala/:id" element={<ResponderFlashcards />} />
             <Route path="/responder-sala/:id/relatorio" element={<RelatorioResposta />} />

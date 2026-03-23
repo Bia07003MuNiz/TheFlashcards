@@ -163,3 +163,13 @@ model Nota {
   usuario_id Int
   usuario    Usuario  @relation(fields: [usuario_id], references: [id])
 }
+
+model RecuperaSenha {
+  id         Int      @id @default(autoincrement())
+  email      String
+  codigo     String
+  expira_em  DateTime
+  usado      Boolean  @default(false)
+
+  created_at DateTime @default(now())
+}

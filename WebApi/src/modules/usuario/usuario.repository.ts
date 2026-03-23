@@ -125,6 +125,16 @@ public async update(id: number, data: UpdateUsuarioDto) {
     },
   });
 }
+
+public async updateByEmail(email: string, data: { senha: string }) {
+  return await this.repository.update({
+    where: { email },
+    data: {
+      senha: data.senha,
+    },
+  });
+}
+
 }
 
 export default new UsuarioRepository();

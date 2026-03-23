@@ -31,6 +31,7 @@
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.3",
     "prisma": "^6.19.2",
+    "sib-api-v3-sdk": "^8.5.0",
     "tsconfig-paths": "^4.2.0",
     "zod": "^4.3.6"
   }

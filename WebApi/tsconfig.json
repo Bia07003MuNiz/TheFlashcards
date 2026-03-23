@@ -32,6 +32,9 @@
             ],
             "@abstracts/*": [
                 "utils/abstracts/*"
+            ],
+            "@config/*": [
+                "config/*"
             ]
         }
     }

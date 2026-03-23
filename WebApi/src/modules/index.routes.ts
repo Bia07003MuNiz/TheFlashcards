@@ -9,9 +9,11 @@ import RelatorioAlunoRoutes from "./relatorioAluno/relatorioAluno.routes";
 import FlashcardRoutes from "./flashcard/flashcard.routes";
 import AutentificacaoRoutes from "./auth/auth.routes";
 import NotasRoutes from "./notas/notas.routes";
+import RecuperaSenhaRoutes from "./recuperaSenha/recuperaSenha.routes";
 
 const router = Router();
 
+router.use("/recupera-senha", RecuperaSenhaRoutes)
 router.use("/instituicao", InstituicaoRoutes);
 router.use("/usuario", UsuarioRoutes);
 router.use("/sala", SalaRoutes);
@@ -21,5 +23,6 @@ router.use("/resposta-flashcard", RespostaFlashcardRoutes);
 router.use("/flashcard", FlashcardRoutes);
 router.use("/autenticacao", AutentificacaoRoutes)
 router.use("/notas", NotasRoutes)
+
 
 export default router;

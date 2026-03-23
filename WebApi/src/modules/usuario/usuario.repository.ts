@@ -135,6 +135,10 @@ public async updateByEmail(email: string, data: { senha: string }) {
   });
 }
 
+public async findByEmail(email: string) {
+  return await this.repository.findUnique({ where: { email } });
+}
+
 }
 
 export default new UsuarioRepository();

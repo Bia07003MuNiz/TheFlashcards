@@ -12,6 +12,12 @@ class RecuperaSenhaController {
   }
 
   @TryCatch()
+  async validarCodigo(req: Request, res: Response) {
+    const result = await Service.validarCodigo(req.body);
+    res.json(result);
+  }
+
+  @TryCatch()
   async redefinirSenha(req: Request, res: Response) {
     const result = await Service.redefinirSenha(+req.params.id, req.body);
     res.json(result);

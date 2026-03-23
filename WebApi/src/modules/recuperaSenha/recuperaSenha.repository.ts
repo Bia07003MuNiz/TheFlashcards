@@ -1,8 +1,8 @@
 import DataSource from "@database/data-source";
 import { CriarCodigoDto } from "./dtos/criar-codigo.dto";
+import UsuarioRepository from "@modules/usuario/usuario.repository";
 
 class RecuperaSenhaRepository {
-
   private readonly repository;
 
   constructor() {
@@ -25,6 +25,11 @@ class RecuperaSenhaRepository {
       where: { id },
       data: { usado: true },
     });
+  }
+
+  async verificarEmailExiste(email: string): Promise<boolean> {
+    const usuario = await UsuarioRepository.findByEmail(email);
+    return !!usuario;
   }
 }
 

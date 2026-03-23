@@ -18,6 +18,7 @@ import { RelatorioAlunoPagina } from '@features/relatorioAluno/pages';
 import { ListaTentativas } from '@features/relatorioAluno/components/CardsTentativas';
 import { TentativasDetalhesAluno } from '@features/relatorioAluno/components/CardsTentativasDetalhes';
 import { CriarContaPagina } from '@features/criarConta/pages';
+import { InserirCodigoPagina, RecuperarSenhaPagina, RedefinirSenhaPagina } from '@features/recuperarSenha/pages';
 
 export const Router = () => {
   return (
@@ -28,6 +29,10 @@ export const Router = () => {
         <Route element={<AuthGuard isPrivate={false} />}>
           <Route path="/login" element={<LoginPagina />} />
           <Route path="/criar-conta" element={<CriarContaPagina />} />
+          <Route path="/recuperar-senha" element={<RecuperarSenhaPagina />} />
+          <Route path="/enviar-codigo" element={<InserirCodigoPagina />} />
+          <Route path="/redefinir-senha" element={<RedefinirSenhaPagina />} />
+
         </Route>
 
         <Route element={<AuthGuard isPrivate={true} />}>

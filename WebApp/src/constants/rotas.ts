@@ -15,6 +15,10 @@ export const rotas = {
   LOGIN: '/login',
   CRIAR_CONTA: '/criar-conta',
 
+  RECUPERAR_SENHA: '/recuperar-senha',
+  ENVIAR_CODIGO: '/enviar-codigo',
+  REDEFINIR_SENHA: '/redefinir-senha',
+
 } as const;
 
 export const rotasDinamicas = {

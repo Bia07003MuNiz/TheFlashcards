@@ -4,6 +4,7 @@ import { enviarCodigoRecuperacao, TEMPO_EXPIRACAO_MINUTOS } from "@config/brevo"
 import UsuarioRepository from "@modules/usuario/usuario.repository";
 import bcrypt from "bcryptjs";
 import { RedefinirSenhaDto } from "./dtos/redefinir-senha.dto";
+import { ValidarCodigoDto } from "./dtos/validar-codigo.dto";
 
 class RecuperaSenhaService {
   private readonly repository;
@@ -13,6 +14,9 @@ class RecuperaSenhaService {
   }
 
   async enviarCodigo(data: EnviarCodigoDto) {
+    const emailExiste = await this.repository.verificarEmailExiste(data.email);
+    if (!emailExiste) throw new Error("E-mail não encontrado");
+
     const codigo = Math.floor(100000 + Math.random() * 900000).toString();
     const expira_em = new Date(Date.now() + TEMPO_EXPIRACAO_MINUTOS * 60 * 1000);
 
@@ -20,6 +24,15 @@ class RecuperaSenhaService {
     await enviarCodigoRecuperacao(data.email, codigo);
 
     return { message: "Código enviado" };
+  }
+
+  async validarCodigo(data: ValidarCodigoDto) {
+    const registro = await this.repository.buscarCodigo(data.email, data.codigo);
+
+    if (!registro) throw new Error("Código inválido");
+    if (new Date() > registro.expira_em) throw new Error("Código expirado");
+
+    return { message: "Código válido" };
   }
 
   async redefinirSenha(id: number, data: RedefinirSenhaDto) {

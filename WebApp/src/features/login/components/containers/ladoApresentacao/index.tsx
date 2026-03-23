@@ -42,7 +42,7 @@ export const LadoApresentacao = () => {
 
           <div className="recuperarSenha">
 
-            <Tipografias.Legenda className='esqueci_minha_senha'>Esqueci minha senha</Tipografias.Legenda>
+            <Tipografias.Legenda className='esqueci_minha_senha' onClick={() => navigate(rotas.RECUPERAR_SENHA)}>Esqueci minha senha</Tipografias.Legenda>
           </div>
           <BotaoCustomizado.BotaoPrimario titulo='Entrar' onClick={handleLogar} />
           <Divider />

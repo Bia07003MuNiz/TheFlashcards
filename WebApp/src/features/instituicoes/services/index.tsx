@@ -1,5 +1,16 @@
 import { httpClient } from '@services/httpClient';
 
+export interface InstituicaoCriar {
+  nome: string;
+  cep: string;
+  rua: string;
+  numero: string;
+  bairro: string;
+  cidade: string;
+  estado: string;
+}
+
+
 export interface InstituicaoListagem {
   id: number;
   nome: string;
@@ -23,6 +34,11 @@ class InstituicaoService {
 
   async buscar(): Promise<InstituicaoListagem[]> {
     const { data } = await this.httpClient.get<InstituicaoListagem[]>(`${this.path}`);
+    return data;
+  }
+
+  async criar(dto: InstituicaoCriar): Promise<InstituicaoCriar> {
+    const { data } = await this.httpClient.post<InstituicaoCriar>(`${this.path}`, dto);
     return data;
   }
 }

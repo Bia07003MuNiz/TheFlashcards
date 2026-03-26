@@ -21,6 +21,7 @@ export const Corpo = () => {
             responderSala: isRotaAtiva(rotas.RESPONDER_SALA),
             notas: isRotaAtiva(rotas.NOTAS),
             perfil: isRotaAtiva(rotas.PERFIL),
+            instituicao: isRotaAtiva(rotas.INSTITUICAO),
         };
     }, [rotas, isRotaAtiva]);
 
@@ -80,6 +81,19 @@ export const Corpo = () => {
                             />
                         </>
                     )}
+
+                    {meuPerfil?.role === "ADMIN" && (
+                        <>
+                        <BotaoCustomizado.BotaoSidebar
+                                estaAtivo={rotaAtual.instituicao}
+                                titulo="Instituição"
+                                variant="text"
+                                startIcon={<GalleryVerticalEnd  size={20} />}
+                                onClick={() => navegarAte(rotas.INSTITUICAO)}
+                            />
+                        </>
+                    )}
+
 
                     <BotaoCustomizado.BotaoSidebar
                         estaAtivo={rotaAtual.notas}

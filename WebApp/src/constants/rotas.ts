@@ -8,6 +8,9 @@ export const rotas = {
 
   RELATORIOS_PROFESSOR: '/relatorios-professor',
 
+  INSTITUICAO: '/instituicao',
+  INSTITUICAO_NOVO: '/instituicao/novo',
+  INSTITUICAO_EDITAR: '/instituicao/editar/:id',
 
   RELATORIOS_ALUNO: '/relatorios-aluno',
   RESPONDER_SALA: '/responder-sala',

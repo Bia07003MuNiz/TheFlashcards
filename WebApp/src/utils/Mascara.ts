@@ -17,6 +17,7 @@ export const formatarCelular = (value: string) => {
 
   return value;
 };
+
 export const formatarCep = (value: string) => {
   value = value.replace(/\D/g, '').slice(0, 8);
   value = value.replace(/^(\d{5})(\d)/, '$1-$2');

@@ -9,7 +9,17 @@ export interface InstituicaoListagem {
   bairro: string;
   cidade: string;
   estado: string;
-  created_at: string; // ISO date
+  created_at: string;
+}
+
+export interface InstituicaoCriar {
+  nome: string;
+  cep: string;
+  rua: string;
+  numero: string;
+  bairro: string;
+  cidade: string;
+  estado: string;
 }
 
 class InstituicaoService {
@@ -24,6 +34,25 @@ class InstituicaoService {
   async buscar(): Promise<InstituicaoListagem[]> {
     const { data } = await this.httpClient.get<InstituicaoListagem[]>(`${this.path}`);
     return data;
+  }
+
+  async criar(payload: InstituicaoCriar): Promise<InstituicaoListagem> {
+    const { data } = await this.httpClient.post<InstituicaoListagem>(`${this.path}`, payload);
+    return data;
+  }
+
+  async buscarPorId(id: number): Promise<InstituicaoListagem> {
+    const { data } = await this.httpClient.get<InstituicaoListagem>(`${this.path}/${id}`);
+    return data;
+  }
+
+  async atualizar(id: number, payload: InstituicaoCriar): Promise<InstituicaoListagem> {
+    const { data } = await this.httpClient.put<InstituicaoListagem>(`${this.path}/${id}`, payload);
+    return data;
+  }
+
+  async deletar(id: number): Promise<void> {
+    await this.httpClient.delete(`${this.path}/${id}`);
   }
 }
 

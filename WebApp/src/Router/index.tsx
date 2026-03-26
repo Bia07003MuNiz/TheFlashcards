@@ -19,6 +19,8 @@ import { ListaTentativas } from '@features/relatorioAluno/components/CardsTentat
 import { TentativasDetalhesAluno } from '@features/relatorioAluno/components/CardsTentativasDetalhes';
 import { CriarContaPagina } from '@features/criarConta/pages';
 import { InserirCodigoPagina, RecuperarSenhaPagina, RedefinirSenhaPagina } from '@features/recuperarSenha/pages';
+import { InstituicaoPagina } from '@features/instituicoes/pages';
+import { NovaInstituicao } from '@features/instituicoes/components/novo';
 
 export const Router = () => {
   return (
@@ -33,14 +35,22 @@ export const Router = () => {
           <Route path="/enviar-codigo" element={<InserirCodigoPagina />} />
           <Route path="/redefinir-senha" element={<RedefinirSenhaPagina />} />
 
+
+          <Route path="/instituicao" element={<InstituicaoPagina />} />
+          <Route path="/instituicao/novo" element={<NovaInstituicao />} />
+          <Route path="/instituicao/editar/:id" element={<SalaEditar />} />
+
+
         </Route>
 
         <Route element={<AuthGuard isPrivate={true} />}>
           <Route element={<MenuNavegacao />}>
 
+
             <Route path="/sala" element={<SalaPagina />} />
             <Route path="/sala/novo" element={<NovaSala />} />
             <Route path="/sala/editar/:id" element={<SalaEditar />} />
+
 
             <Route path="/relatorios-professor" element={<RelatoriosProfessorPagina />} />
             <Route path="/relatorios-professor/:id" element={<ListaAluno />} />

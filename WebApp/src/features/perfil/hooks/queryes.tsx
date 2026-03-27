@@ -19,7 +19,7 @@ export const useMeuPerfil = () => {
             role: data.role,
             data_nascimento: data.data_nascimento,
             created_at: data.created_at,
-            instituicao_id: data.instituicao_id
+            instituicoes: data.instituicoes.map((i) => i.instituicaoId)
         }),
     });
 

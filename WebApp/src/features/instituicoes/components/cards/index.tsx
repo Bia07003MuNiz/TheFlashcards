@@ -22,12 +22,12 @@ export const Cards = () => {
         icon: <BookOpen size={16} color="#76869c" />,
         legenda: (
           <Tipografias.LegendaSimples>
-            {item.rua}, {item.numero} - {item.bairro} - {item.cidade} - {item.estado}
+            {item.rua}, {item.numero} - {item.bairro} - {item.cidade}
           </Tipografias.LegendaSimples>
         ),
         chip: (
           <Chip
-            label={item.cep}
+            label={item.estado}
             color={'primary'}
             size="small"
           />

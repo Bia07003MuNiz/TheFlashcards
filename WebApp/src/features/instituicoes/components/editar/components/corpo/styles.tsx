@@ -5,6 +5,7 @@ export const ContainerLayout = styled(Box)`
   gap: 24px;
   width: 100%;
   align-items: center;
+  justify-content: center;
 `;
 
 export const ContainerCards = styled(Box)`

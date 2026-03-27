@@ -126,9 +126,7 @@ export const CorpoEditarInstituicao: FC<Props> = ({
             </LinhaInputs>
           </div>
         </CardsContainerGeral>
-      </ContainerCards>
-
-      <ContainerBotao className="botaoCustomizado">
+         <ContainerBotao className="botaoCustomizado">
         <BotaoCustomizado.BotaoSecundario titulo="Cancelar" />
         <BotaoCustomizado.BotaoPrimario
           titulo="Atualizar Instituição"
@@ -136,7 +134,7 @@ export const CorpoEditarInstituicao: FC<Props> = ({
           onClick={handleInstituicao}
         />
       </ContainerBotao>
-
+      </ContainerCards>
       <BackDropCustomizado aberto={isLoadingBuscaUnica} />
     </ContainerLayout>
   );

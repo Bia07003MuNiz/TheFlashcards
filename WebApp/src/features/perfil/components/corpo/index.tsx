@@ -67,17 +67,24 @@ export const CorpoMeuPerfil = () => {
         </LinhaInputs>
         
         <InputContainer>
-          <Controller
-            name="instituicao_id"
-            control={control}
+            <Controller
+                    name="instituicoes"
+                    control={control}
                     render={({ field }) => (
-                      <InputCustomizado.AutoComplete
+                      <InputCustomizado.AutoCompleteMultiplo
                         label="Instituição *"
                         options={instituicoes || []}
-                        value={instituicoes?.find(i => i.value === field.value) || null}
-                        handleChangeState={(novo) => field.onChange(novo?.value ?? null)}
-                        error={!!errors.instituicao_id}
-                        helperText={errors.instituicao_id?.message}
+                        value={
+                          instituicoes?.filter(i =>
+                            field.value?.includes(Number(i.value))
+                          ) || []
+                        }
+                        handleChangeState={(novo) =>
+                          field.onChange(novo.map(item => Number(item.value)))
+                        }
+                        limitTags={2}
+                        error={!!errors.instituicoes}
+                        helperText={errors.instituicoes?.message}
                         placeholder="Selecione a instituição"
                         loading={estaCarregandoInstituicoes}
                       />

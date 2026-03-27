@@ -7,7 +7,22 @@ export interface Usuario {
   role: 'PROFESSOR' | 'ALUNO' | 'ADMIN';
   data_nascimento: string;
   created_at: string;
-  instituicao_id: number;
+   instituicoes: {
+    id: number;
+    usuarioId: number;
+    instituicaoId: number;
+    instituicao: {
+      id: number;
+      nome: string;
+      cep: string;
+      rua: string;
+      numero: string;
+      bairro: string;
+      cidade: string;
+      estado: string;
+      created_at: string;
+    };
+  }[];
 }
 
 export interface EditarUsuarioDto {
@@ -16,7 +31,7 @@ export interface EditarUsuarioDto {
   role: 'PROFESSOR' | 'ALUNO' | 'ADMIN';
   data_nascimento: string;
   created_at: string;
-  instituicao_id: number;
+  instituicoes: number[];
 }
 
 class UsuarioService {

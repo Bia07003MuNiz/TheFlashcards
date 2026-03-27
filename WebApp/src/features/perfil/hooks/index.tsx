@@ -11,7 +11,7 @@ export const UsuarioSchema = z.object({
   role: z.enum(["PROFESSOR", "ALUNO", "ADMIN"]),
   data_nascimento: z.string(),
   created_at: z.string().optional(),
-  instituicao_id: z.number()
+  instituicoes: z.array(z.number().min(1)).min(1, "Selecione pelo menos uma instituição"),
 });
 export type Usuario = z.infer<typeof UsuarioSchema>;
 
@@ -49,7 +49,7 @@ export const useMeuUsuarioController = () => {
         email: dados.email,
         role: dados.role,
         data_nascimento: dados.data_nascimento,
-        instituicao_id: dados.instituicao_id,
+        instituicoes: dados.instituicoes,
         created_at: dados.created_at || ''
       },
     });

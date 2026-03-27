@@ -18,8 +18,8 @@ class SalaService {
     return sala;
   }
 
-  public async read() {
-    return this.repository.read();
+  public async read(userId: number, role: string) {
+    return this.repository.read(userId, role);
   }
 
   public async readById(id: number) {

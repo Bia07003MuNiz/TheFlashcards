@@ -10,12 +10,17 @@ class SalaController {
     const result = await Service.create(req.body);
     res.status(201).json(result);
   }
-
+  
   @TryCatch()
   async read(req: Request, res: Response) {
-    const result = await Service.read();
-    res.json(result);
+  const user = (req as any).user;
+  if (!user) {
+    return res.status(401).json({ message: "Não autorizado" });
   }
+
+  const salas = await Service.read(user.id, user.role);
+  return res.json(salas);
+}
 
   @TryCatch()
   async readById(req: Request, res: Response) {

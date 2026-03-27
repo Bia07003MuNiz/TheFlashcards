@@ -22,8 +22,27 @@ class SalaRepository {
     });
   }
 
-  public async read() {
+  public async read(userId: number, role: string) {
+    if (role === "ADMIN") {
+      return this.repository.findMany({
+        orderBy: { created_at: "asc" },
+        include: { flashcards: true },
+      });
+    }
+
+    const usuario = await DataSource.usuario.findUnique({
+      where: { id: userId },
+      include: { instituicoes: true },
+    });
+
+    const instituicoesIds = usuario?.instituicoes.map((i) => i.instituicaoId) || [];
+
     return this.repository.findMany({
+      where: {
+        instituicao_id: {
+          in: instituicoesIds,
+        } 
+      },
       orderBy: { created_at: "asc" },
       include: { flashcards: true },
     });

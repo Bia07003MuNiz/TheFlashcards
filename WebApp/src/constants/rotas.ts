@@ -22,10 +22,6 @@ export const rotas = {
   ENVIAR_CODIGO: '/enviar-codigo',
   REDEFINIR_SENHA: '/redefinir-senha',
 
-  INSTITUICAO: '/instituicao',
-  INSTITUICAO_NOVO: '/instituicao/novo',
-  INSTITUICAO_EDITAR: '/instituicao/editar/:id',
-
 } as const;
 
 export const rotasDinamicas = {

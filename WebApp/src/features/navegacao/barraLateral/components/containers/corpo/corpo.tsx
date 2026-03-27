@@ -2,7 +2,7 @@ import { BotaoCustomizado } from '@shared/components/botao';
 import {  Avatar, Container, ContainerItens, ConteinerSair, Divider, Footer, ItemsDaSidebar, PerfilContainer, PerfilInfo } from './styles';
 import { useRotas } from '@hooks/useRotas';
 import { useMemo } from 'react';
-import { BookOpenCheck, ChartColumn, Copy, FolderKanban, GalleryVerticalEnd, LogOut, StickyNote, User } from 'lucide-react';
+import { BookOpenCheck, ChartColumn, Copy, FolderKanban, GalleryVerticalEnd, LogOut, School, StickyNote, User } from 'lucide-react';
 import useAuth from '@contexts/AuthContext';
 import { useMeuPerfil } from '@features/navegacao/barraLateral/hooks/useMeuPerfil';
 import { Tipografias } from '@shared/components/tipografias';
@@ -11,6 +11,7 @@ export const Corpo = () => {
     const { rotas, isRotaAtiva, navegarAte } = useRotas();
     const { meuPerfil } = useMeuPerfil();
     const isProfessor = meuPerfil?.role === "PROFESSOR";
+    const isAdmin = meuPerfil?.role === "ADMIN";
     const { signOutHandler } = useAuth();
 
     const rotaAtual = useMemo(() => {
@@ -42,58 +43,55 @@ export const Corpo = () => {
                 <Divider />
 
                 <ItemsDaSidebar>
-                    {isProfessor && (
-                        <>
-                            <BotaoCustomizado.BotaoSidebar
-                                estaAtivo={rotaAtual.salas}
-                                titulo="Salas"
-                                variant="text"
-                                startIcon={<BookOpenCheck size={20} />}
-                                onClick={() => navegarAte(rotas.SALA)}
-                            />
-
-                            <BotaoCustomizado.BotaoSidebar
-                                estaAtivo={rotaAtual.relatorioProfessor}
-                                titulo="Relatório"
-                                variant="text"
-                                startIcon={<ChartColumn size={20} />}
-                                onClick={() => navegarAte(rotas.RELATORIOS_PROFESSOR)}
-                            />
-                        </>
-                    )}
-
-                    {!isProfessor && (
-                        <>
+                   {isProfessor && !isAdmin && (
+                    <>
                         <BotaoCustomizado.BotaoSidebar
-                                estaAtivo={rotaAtual.responderSala}
-                                titulo="Responder Sala"
-                                variant="text"
-                                startIcon={<GalleryVerticalEnd  size={20} />}
-                                onClick={() => navegarAte(rotas.RESPONDER_SALA)}
-                            />
+                        estaAtivo={rotaAtual.salas}
+                        titulo="Salas"
+                        variant="text"
+                        startIcon={<BookOpenCheck size={20} />}
+                        onClick={() => navegarAte(rotas.SALA)}
+                        />
 
-                            <BotaoCustomizado.BotaoSidebar
-                                estaAtivo={rotaAtual.relatorioAluno}
-                                titulo="Relatório"
-                                variant="text"
-                                startIcon={<ChartColumn size={20} />}
-                                onClick={() => navegarAte(rotas.RELATORIOS_ALUNO)}
-                            />
-                        </>
-                    )}
-
-                    {meuPerfil?.role === "ADMIN" && (
-                        <>
                         <BotaoCustomizado.BotaoSidebar
-                                estaAtivo={rotaAtual.instituicao}
-                                titulo="Instituição"
-                                variant="text"
-                                startIcon={<GalleryVerticalEnd  size={20} />}
-                                onClick={() => navegarAte(rotas.INSTITUICAO)}
-                            />
-                        </>
+                        estaAtivo={rotaAtual.relatorioProfessor}
+                        titulo="Relatório"
+                        variant="text"
+                        startIcon={<ChartColumn size={20} />}
+                        onClick={() => navegarAte(rotas.RELATORIOS_PROFESSOR)}
+                        />
+                    </>
                     )}
 
+                    {!isProfessor && !isAdmin && (
+                    <>
+                        <BotaoCustomizado.BotaoSidebar
+                        estaAtivo={rotaAtual.responderSala}
+                        titulo="Responder Sala"
+                        variant="text"
+                        startIcon={<GalleryVerticalEnd size={20} />}
+                        onClick={() => navegarAte(rotas.RESPONDER_SALA)}
+                        />
+
+                        <BotaoCustomizado.BotaoSidebar
+                        estaAtivo={rotaAtual.relatorioAluno}
+                        titulo="Relatório"
+                        variant="text"
+                        startIcon={<ChartColumn size={20} />}
+                        onClick={() => navegarAte(rotas.RELATORIOS_ALUNO)}
+                        />
+                    </>
+                    )}
+
+                    {isAdmin && (
+                        <BotaoCustomizado.BotaoSidebar
+                            estaAtivo={rotaAtual.instituicao}
+                            titulo="Instituição"
+                            variant="text"
+                            startIcon={<School size={20} />}
+                            onClick={() => navegarAte(rotas.INSTITUICAO)}
+                        />
+                    )}
 
                     <BotaoCustomizado.BotaoSidebar
                         estaAtivo={rotaAtual.notas}

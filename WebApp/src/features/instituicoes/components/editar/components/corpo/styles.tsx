@@ -9,7 +9,7 @@ export const ContainerLayout = styled(Box)`
 `;
 
 export const ContainerCards = styled(Box)`
-  width: 65%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 24px;

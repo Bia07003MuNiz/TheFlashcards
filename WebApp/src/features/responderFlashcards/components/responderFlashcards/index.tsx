@@ -63,14 +63,14 @@ export const ResponderFlashcards = () => {
           <CardFace>
             <CardBrancoConteudo>
               <Tipografias.LegendaMedio>PERGUNTA</Tipografias.LegendaMedio>
-              <Tipografias.Titulo>{cardAtual.pergunta}</Tipografias.Titulo>
+              <Tipografias.Titulo sx={{fontSize: {xs: '18px'}}}>{cardAtual.pergunta}</Tipografias.Titulo>
               <RotateText> <RotateCcw size={18} />Clique para virar</RotateText>
             </CardBrancoConteudo>
           </CardFace>
 
           <CardVerso>
             <Tipografias.LegendaMedio>RESPOSTA</Tipografias.LegendaMedio>
-            <Tipografias.Titulo>{cardAtual.resposta}</Tipografias.Titulo>
+            <Tipografias.Titulo sx={{fontSize: {xs: '18px'}}}>{cardAtual.resposta}</Tipografias.Titulo>
           </CardVerso>
         </CardFlip>
       </CardWrapper>

@@ -19,8 +19,11 @@ export const ConteinerCabecalhoGrafico = styled(Box)`
 export const Conteudo = styled(Box)`
   display: grid;
   grid-template-columns: 500px 1fr;
-  height: 90%;
   gap: 24px;
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const ConteudoInical = styled(Box)`
@@ -75,6 +78,10 @@ export const LadoDireito = styled(Box)`
   .cabecalho-cards{
     margin-bottom: 24px;
   }
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    height: auto;
+  }
 `;
 
 export const CardBrancoConteudo = styled(Box)`
@@ -94,6 +101,10 @@ export const ListaPerguntas = styled(Box)`
   overflow-y: auto;
   max-height: 450px;
   padding-right: 8px;
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    max-height: none;
+  }
 `;
 
 export const FooterBotoes = styled(Box)`

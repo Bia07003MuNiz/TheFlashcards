@@ -61,12 +61,15 @@ export const InfoPrincipal = styled(Box)`
   align-items: center;
   gap: 20px;
 
-  .linhaTopo{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    width:100%;
+  .linhaTopo {
+  display: flex;
+  gap: 12px;
+  width: 100%;
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    align-items: flex-start;
   }
+}
 
   .barra{
     color:#cbd5e1;
@@ -74,16 +77,22 @@ export const InfoPrincipal = styled(Box)`
   }
 
   .dados {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    padding-right: 18px; 
   }
+}
 
   .nome {
-    font-size: 18px;
-    font-weight: 600;
-    color: #0f172a;
-  }
+  font-size: 18px;
+  font-weight: 600;
+  color: #0f172a;
+
+  word-break: break-word;
+}
 
   .email {
     display: flex;
@@ -91,6 +100,15 @@ export const InfoPrincipal = styled(Box)`
     gap: 6px;
     color: #64748b;
     font-size: 14px;
+  }
+  .email span {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: normal;
+  }
+
+   ${({ theme }) => theme.breakpoints.down("laptop")} {
+    padding-right: 32px; 
   }
 `;
 
@@ -277,6 +295,11 @@ export const RadioFake = styled(Box)`
       background: #f0fdf4;
     }
   }
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    width: 20px;
+    height: 15px;
+  }
 `;
 
 export const IconeEditar = styled(Box)`
@@ -299,5 +322,10 @@ export const IconeEditar = styled(Box)`
 
   &.baixa {
     color: #27a63e;
+  }
+
+    ${({ theme }) => theme.breakpoints.down("laptop")} {
+    top: 12px;
+    right: 12px;
   }
 `;

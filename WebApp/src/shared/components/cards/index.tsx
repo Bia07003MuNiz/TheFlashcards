@@ -5,6 +5,11 @@ export const CardsContainer = styled(Box)`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(336px, 1fr));
   gap: 24px;
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+  }
 `;
 
 const CardHeader = styled(Box)`

@@ -22,7 +22,7 @@ export const useResponderFlashcardsController = (
 
   const total = flashcards.length;
   const atual = indexAtual + 1;
-  const progresso = total ? (atual / total) * 100 : 0;
+  const progresso = total ? (respostas.length / total) * 100 : 0;
   const cardAtual = flashcards[indexAtual];
   const isUltimo = indexAtual === total - 1;
 

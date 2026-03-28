@@ -4,11 +4,14 @@ export const Conteudo = styled(Box)`
   display: flex;
   gap: 4px;
   flex-wrap: wrap;
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    flex-direction: column;
+  }
 `;
 
 export const ConteinerDireito = styled(Box)`
   flex: 1;
-  min-width: 300px;
   display: flex;
   flex-direction: column;
   gap: 2;
@@ -84,7 +87,10 @@ export const ConteinerTextoGrafico = styled(Box)`
 
 export const BoxGrafico = styled(Box)`
   flex: 1;
-  min-width: 300px;
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    width: 100%;
+  }
 `;
 
 export const Divider = styled('hr')`

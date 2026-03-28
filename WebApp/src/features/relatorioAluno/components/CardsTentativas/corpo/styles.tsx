@@ -38,6 +38,10 @@ export const TopoCards = styled(Box)`
   display: flex;
   gap: 16px;
   margin-bottom: 20px;
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    flex-direction: column;
+  }
 `;
 
 export const CardResumo = styled(Box)`
@@ -50,7 +54,6 @@ export const CardResumo = styled(Box)`
   border: 1px solid #e2e8f0;
   background: #fff;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10);
-
 `;
 
 export const IconeBox = styled(Box)<{ bg: string }>`
@@ -94,9 +97,17 @@ export const IconeDireita = styled(Box)`
   align-items: center;
   color: #64748b;
   transition: color 0.2s;
-`;
 
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    align-self: flex-start;
+    margin-top: 18px;
+  }
+`;
 export const ItemTentativa = styled(Box)`
+  position: relative; 
   width: 100%;
   padding: 20px;
   border-bottom: 1px solid #e2e8f0;
@@ -104,13 +115,20 @@ export const ItemTentativa = styled(Box)`
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+
   &:hover {
     background: #eef2f7;
   }
 
   &:hover .icone-direita {
     color: #000000;
+  }
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
   }
 `;
 
@@ -125,7 +143,23 @@ export const LadoEsquerdo = styled(Box)`
     justify-content: center;
     align-items: center; 
     text-align: center;
+  }
 
+  .bloco-info {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .data {
+      align-items: flex-start;
+      text-align: left;
+    }
   }
 `;
 
@@ -142,6 +176,11 @@ export const CirculoStatus = styled(Box)<{ cor: string }>`
   .porcentagem {
     color: #fff;
     font-weight: 600;
+  }
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    width: 55px;
+    height:48px;
   }
 `;
 
@@ -162,10 +201,13 @@ export const ChipStatus = styled(Box)<{ cor: string }>`
   font-weight: 500;
   background: ${({ cor }) => cor}20;
   color: ${({ cor }) => cor};
-
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
+  
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    display: none;
+  }
 `;
 

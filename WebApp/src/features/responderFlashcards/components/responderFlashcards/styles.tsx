@@ -10,16 +10,26 @@ export const Cabecalho = styled(Box)`
   justify-content: space-between;
   align-items: center;
 
-   .voltar{
+  .voltar {
     display: flex;
     align-items: center;
     gap: 8px;
     cursor: pointer;
   }
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
 `;
 
 export const ProgressWrapper = styled(Box)`
   width: 200px;
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    width: 100%;
+  }
 `;
 
 export const ProgressTrack = styled(Box)`
@@ -56,6 +66,11 @@ export const CardFlip = styled(Box)`
   &.virado {
     transform: rotateY(180deg);
   }
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    width: 100%;
+    height: 320px;
+  }
 `;
 
 export const CardFace = styled(Box)`
@@ -83,6 +98,12 @@ export const CardBrancoConteudo = styled(Box)`
   justify-content: center;
   align-items: center;
   gap: 16px;
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    padding: 16px;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const CardVerso = styled(Box)`
@@ -107,6 +128,12 @@ export const CardVerso = styled(Box)`
   justify-content: center;
   align-items: center;
   gap: 16px;
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    padding: 16px;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const RotateText = styled(Box)`
@@ -131,6 +158,12 @@ export const Botoes = styled(Box)`
     gap: 36px;
     width: 100%;
   }
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    .linha {
+      gap: 12px;
+    }
+  }
 `;
 export const BotaoErro = styled(Box)`
   display: flex;
@@ -151,6 +184,12 @@ export const BotaoErro = styled(Box)`
   &:hover {
     background: #fdf1f1;
   }
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    width: 45%;
+    font-size: 14px;
+    padding: 12px 16px;
+  }
 `;
 
 export const BotaoAcerto = styled(Box)`
@@ -170,6 +209,12 @@ export const BotaoAcerto = styled(Box)`
 
   &:hover {
     background: #008035;
+  }
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    width: 45%;
+    font-size: 14px;
+    padding: 12px 16px;
   }
 `;
 export const BotaoFinalizar = styled(Box)`

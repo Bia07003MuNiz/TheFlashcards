@@ -86,11 +86,11 @@ export const CardsTentativas = () => {
                         <Tipografias.TextoSimples>{formatarData(tentativa.criado_em)}</Tipografias.TextoSimples>
                         <Tipografias.LegendaSimples>{formatarHora(tentativa.criado_em, true)}</Tipografias.LegendaSimples>
                       </div>
-
-                      <CirculoStatus cor={status.cor}>
-                        <Tipografias.TextoSimples className='porcentagem'>{ tentativa.porcentagem_acertos}%</Tipografias.TextoSimples>
-                      </CirculoStatus>
-
+                      <div className='bloco-info'>
+                        <CirculoStatus cor={status.cor}>
+                          <Tipografias.TextoSimples className='porcentagem'>{ tentativa.porcentagem_acertos}%</Tipografias.TextoSimples>
+                        </CirculoStatus>
+                   
                       <ConteinerAcertos>
                         <ChipStatus cor={status.cor}>{status.label}</ChipStatus>
                         <InfoTentativa>
@@ -99,6 +99,7 @@ export const CardsTentativas = () => {
                           </Tipografias.LegendaSimples>
                         </InfoTentativa>
                       </ConteinerAcertos>
+                         </div>
                     </LadoEsquerdo>
 
                     <IconeDireita className="icone-direita">

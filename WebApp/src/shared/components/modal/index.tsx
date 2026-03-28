@@ -22,7 +22,7 @@ export const ModalCustomizado: React.FC<ModalCustomizadoProps> = ({
         <Modal open={open} onClose={onClose}>
             <ModalContainer width={width}>
                 {title && (
-                    <CabecalhoContainer                    >
+                    <CabecalhoContainer>
                         <Tipografias.LegendaMedio>{title}</Tipografias.LegendaMedio>
                         <IconButton onClick={onClose}>
                             <X size={20} />
@@ -37,17 +37,26 @@ export const ModalCustomizado: React.FC<ModalCustomizadoProps> = ({
 };
 
 export const ModalContainer = styled(Box, {
-    shouldForwardProp: (prop) => prop !== "width",
-}) <{ width?: number | string }>`
+  shouldForwardProp: (prop) => prop !== "width",
+})<{ width?: number | string }>`
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: ${({ width }) => (typeof width === "number" ? `${width}px` : width)};
+
+  width: ${({ width }) =>
+    typeof width === "number" ? `${width}px` : width};
+  max-width: 90%;
+
   background-color: #ffffff;
   border-radius: 8px;
   box-shadow: 0px 11px 15px rgba(0,0,0,0.2);
   padding: 24px;
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    width: 90%;
+    padding: 16px;
+  }
 `;
 
 export const CabecalhoContainer = styled(Box)`

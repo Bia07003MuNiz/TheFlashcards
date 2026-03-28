@@ -24,7 +24,7 @@ export const Grafico = () => {
   const COLORS = ['#22c55e', '#ef4444'];
 
   return (
-    <>
+   
     <CardBrancoConteudo>
       <Conteudo>
         <BoxGrafico>
@@ -91,7 +91,7 @@ export const Grafico = () => {
         </ConteinerDireito>
       </Conteudo>
     </CardBrancoConteudo>
-    </>
+    
 
   );
 };

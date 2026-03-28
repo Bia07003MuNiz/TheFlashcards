@@ -12,6 +12,10 @@ export const Conteudo = styled(Box)`
 export const CardBrancoConteudo = styled(Box)`
   width: 100%;
   padding: 24px;
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    padding: 0px;
+  }
 `;
 
 export const CardPerguntaeResposta = styled(Box, {

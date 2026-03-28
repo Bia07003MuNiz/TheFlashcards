@@ -40,4 +40,9 @@ export const LinhaInputs = styled(Box)`
   display: flex;
   gap: 16px;
   width: 100%;
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    flex-direction: column;
+    gap: 5px;
+  }
 `;

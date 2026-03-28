@@ -51,7 +51,7 @@ export const useMeuPerfil = () => {
         }
         return await instituicaoService.buscar();
     },
-    enabled: !!meuPerfil?.role, // aguarda o perfil carregar antes de buscar
+    enabled: !!meuPerfil?.role,
     select: (data) => data.map((instituicao) => ({
         value: instituicao.id,
         label: instituicao.nome,

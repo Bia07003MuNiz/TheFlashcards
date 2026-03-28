@@ -92,7 +92,7 @@ export const ListaPerguntas = styled(Box)`
   flex-direction: column;
   gap: 16px;
   overflow-y: auto;
-  height: 450px;
+  max-height: 450px;
   padding-right: 8px;
 `;
 
@@ -110,9 +110,10 @@ export const FooterBotoes = styled(Box)`
 
 export const CardPerguntaeResposta = styled(Box, {
   shouldForwardProp: (prop) => prop !== 'correta',
-}) <{
+})<{
   correta?: boolean;
 }>`
+  flex-shrink: 0;
   position: relative;
   width: 100%;
   padding: 20px;
@@ -125,7 +126,6 @@ export const CardPerguntaeResposta = styled(Box, {
   gap: 8px;
 
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
-
   overflow: hidden;
 
   &::before {
@@ -136,7 +136,7 @@ export const CardPerguntaeResposta = styled(Box, {
     bottom: 0;
     width: 6px;
     background-color: ${({ correta }) =>
-    correta ? '#22c55e' : '#ef4444'};
+      correta ? '#22c55e' : '#ef4444'};
   }
 `;
 

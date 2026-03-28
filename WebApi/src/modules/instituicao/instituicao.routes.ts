@@ -1,9 +1,11 @@
 import { Router } from "express";
 import Controller from "./instituicao.controller";
 import Validator from "./instituicao.validator";
+import { AuthMiddleware } from "@modules/auth/auth.middleware";
 
 const router = Router();
 
+router.use(AuthMiddleware);
 router
     .route("/")
     .post(Validator.create, Controller.create)

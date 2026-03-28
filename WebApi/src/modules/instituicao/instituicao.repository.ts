@@ -16,11 +16,32 @@ class InstituicaoRepository {
         });
     }
 
-    public async read() {
-        return await this.repository.findMany({
-            orderBy: { created_at: "desc" },
-        });
+   public async read(userId: number, role: string) {
+    if (role === 'ADMIN') {
+      return this.repository.findMany({
+        orderBy: { created_at: "desc" },
+        include: { usuarios: true },
+      });
     }
+
+    const usuario = await DataSource.usuario.findUnique({
+      where: { id: userId },
+      include: { instituicoes: true },
+    });
+
+    const instituicoesIds =
+      usuario?.instituicoes.map(i => i.instituicaoId) || [];
+
+    return this.repository.findMany({
+      where: {
+        id: {
+          in: instituicoesIds,
+        },
+      },
+      orderBy: { created_at: "desc" },
+      include: { usuarios: true },
+    });
+  }
 
     public async readById(id: number) {
         return await this.repository.findUnique({

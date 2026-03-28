@@ -6,11 +6,12 @@ import { BotaoCustomizado } from '@shared/components/botao';
 import { Controller } from 'react-hook-form';
 import dayjs from 'dayjs';
 import { useMeuPerfil } from '@features/perfil/hooks/queryes';
+import { Tipografias } from '@shared/components/tipografias';
 
 export const CorpoMeuPerfil = () => {
   const { register, errors, control, handleEditar } = useMeuUsuarioController();
-    const { instituicoes, estaCarregandoInstituicoes } = useMeuPerfil();
-  
+    const { instituicoes, estaCarregandoInstituicoes, meuPerfil } = useMeuPerfil();
+  const isAluno = meuPerfil?.role === 'ALUNO';
     return (
       <CardBrancoConteudo>
         <InputContainer>
@@ -68,29 +69,33 @@ export const CorpoMeuPerfil = () => {
         
         <InputContainer>
             <Controller
-                    name="instituicoes"
-                    control={control}
-                    render={({ field }) => (
-                      <InputCustomizado.AutoCompleteMultiplo
-                        label="Instituição *"
-                        options={instituicoes || []}
-                        value={
-                          instituicoes?.filter(i =>
-                            field.value?.includes(Number(i.value))
-                          ) || []
-                        }
-                        handleChangeState={(novo) =>
-                          field.onChange(novo.map(item => Number(item.value)))
-                        }
-                        limitTags={2}
-                        error={!!errors.instituicoes}
-                        helperText={errors.instituicoes?.message}
-                        placeholder="Selecione a instituição"
-                        loading={estaCarregandoInstituicoes}
-                      />
-                    )}
-                  />
-                </InputContainer>
+            name="instituicoes"
+            control={control}
+            render={({ field }) => (
+              <InputCustomizado.AutoCompleteMultiplo
+                label="Instituição *"
+                options={instituicoes || []}
+                value={
+                  instituicoes?.filter(i =>
+                    field.value?.includes(Number(i.value))
+                  ) || []
+                }
+                handleChangeState={(novo) => field.onChange(isAluno ? novo.slice(0, 1).map(i => i.value) : novo.map(i => i.value))}
+                limitTags={2}
+                error={!!errors.instituicoes}
+                helperText={errors.instituicoes?.message}
+                placeholder="Selecione a instituição"
+                loading={estaCarregandoInstituicoes}
+                multiple={!isAluno}
+              />
+            )}
+          />
+          {isAluno && ( 
+            <Tipografias.LegendaSimples>
+              ALUNO É VINCULADO A UMA INSTITUIÇÃO
+            </Tipografias.LegendaSimples>
+          )}
+        </InputContainer>
         <InputContainer>
               
           <ContainerBotao className='botaoCustomizado'>

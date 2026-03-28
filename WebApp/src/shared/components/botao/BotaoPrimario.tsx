@@ -1,5 +1,6 @@
 import { Button, type ButtonPropsSizeOverrides, type ButtonPropsVariantOverrides, styled } from '@mui/material';
 import type { OverridableStringUnion } from '@mui/types';
+import { Tipografias } from '../tipografias';
 
 interface IBotaoPrimario {
   estaAtivo?: boolean;
@@ -34,7 +35,7 @@ export const BotaoPrimario = ({
       disabled={disabled}
       onClick={onClick}
     >
-      {titulo}
+     <Tipografias.TextoSimples className='label'>{titulo}</Tipografias.TextoSimples>
     </BotaoCustomizado>
   );
 };
@@ -52,4 +53,8 @@ export const BotaoCustomizado = styled(Button)`
   border: 1px solid ${({ theme }) => theme.palette.secondary.main};
   box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.05);
   border-radius: 8px;
+
+  .label {
+    color: white;
+  }
 `;

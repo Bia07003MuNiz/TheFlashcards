@@ -14,8 +14,8 @@ class InstituicaoService {
         return await this.repository.create(data);
     }
 
-    public async read() {
-        return await this.repository.read();
+    public async read(userId: number, role: string) {
+        return await this.repository.read(userId, role);
     }
 
     public async readById(id: number) {

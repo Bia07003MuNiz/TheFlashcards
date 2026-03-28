@@ -119,6 +119,19 @@ class RelatorioAlunoRepository {
     },
   });
 }
+
+  public async readByAlunoAndGeral(
+    aluno_id: number,
+    relatorio_geral_id: number
+  ) {
+    return this.repository.findMany({
+      where: {
+        aluno_id,
+        relatorio_geral_id,
+      },
+    });
+  }
+
 }
 
 export default new RelatorioAlunoRepository();

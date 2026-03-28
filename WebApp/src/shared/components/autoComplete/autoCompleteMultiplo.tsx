@@ -23,6 +23,7 @@ interface IAutoCompleteMultiplo<T extends BaseOption> {
   noOptionsText?: string;
   disabled?: boolean;
   limitTags?: number;
+  multiple?: boolean;
 }
 
 export const AutoCompleteMultiplo = <T extends BaseOption>({

@@ -17,28 +17,30 @@ export const Cards = () => {
 
   const cards = useMemo(
     () =>
-      data.map((item) => ({
-        label: `${item.nome} - ${item.turma}`,
-        icon: <BookOpen size={16} color="#76869c" />,
-        legenda: (
-          <Tipografias.LegendaSimples>
-            {item.descricao}
-          </Tipografias.LegendaSimples>
-        ),
-        chip: (
-          <Chip
-            label={item.ativa ? 'Ativo' : 'Inativo'}
-            color={item.ativa ? 'success' : 'error'}
-            size="small"
-          />
-        ),
-        botao: (
-          <BotaoCustomizado.BotaoPrimario
-            titulo="Responder Flashcards"
-            onClick={() => navigate(`/responder-sala/${item.id}`)}
-          />
-        ),
-      })),
+      data
+        .filter((item) => item.ativa === true)
+        .map((item) => ({
+          label: `${item.nome} - ${item.turma}`,
+          icon: <BookOpen size={16} color="#76869c" />,
+          legenda: (
+            <Tipografias.LegendaSimples>
+              {item.descricao}
+            </Tipografias.LegendaSimples>
+          ),
+          chip: (
+            <Chip
+              label={item.ativa ? 'Ativo' : 'Inativo'}
+              color={item.ativa ? 'success' : 'error'}
+              size="small"
+            />
+          ),
+          botao: (
+            <BotaoCustomizado.BotaoPrimario
+              titulo="Responder Flashcards"
+              onClick={() => navigate(`/responder-sala/${item.id}`)}
+            />
+          ),
+        })),
     [data]
   );
 

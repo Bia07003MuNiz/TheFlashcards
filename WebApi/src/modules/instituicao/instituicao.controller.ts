@@ -11,7 +11,8 @@ class InstituicaoController {
 
     @TryCatch()
     async read(req: Request, res: Response) {
-        const result = await Service.read();
+        const user = (req as any).user;
+        const result = await Service.read(user.id, user.role);
         res.status(200).json(result);
     }
 

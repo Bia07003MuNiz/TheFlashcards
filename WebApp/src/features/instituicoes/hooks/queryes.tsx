@@ -25,5 +25,11 @@ export const useInstituicoesBuscar = (deveBuscarTodos = true) => {
         },
     });
 
-    return { data, isLoading, isPending, post };
+    const { data: dataTodos = [], isLoading: isLoadingTodos, refetch: refetchTodos } = useQuery<InstituicaoListagem[]>({
+        queryKey: ['instituicoes-todos'],
+        queryFn: () => instituicaoService.buscarTodos(),
+        enabled: deveBuscarTodos,
+    });
+
+    return { data, isLoading, isPending, post, dataTodos, isLoadingTodos, refetchTodos };
 };

@@ -17,6 +17,12 @@ class InstituicaoController {
     }
 
     @TryCatch()
+    async readTodos(req: Request, res: Response) {
+        const result = await Service.readTodos();
+        res.status(200).json(result);
+    }
+
+    @TryCatch()
     async readById(req: Request, res: Response) {
         const result = await Service.readById(+req.params.id);
         res.status(200).json(result);

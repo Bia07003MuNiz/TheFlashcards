@@ -54,6 +54,11 @@ class InstituicaoService {
   async deletar(id: number): Promise<void> {
     await this.httpClient.delete(`${this.path}/${id}`);
   }
+
+  async buscarTodos(): Promise<InstituicaoListagem[]> {
+    const { data } = await this.httpClient.get<InstituicaoListagem[]>(`${this.path}/todos`);
+    return data;
+  }
 }
 
 export default new InstituicaoService();

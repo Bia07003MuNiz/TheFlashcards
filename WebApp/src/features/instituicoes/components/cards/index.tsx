@@ -12,12 +12,12 @@ import { BookOpen, Pencil } from 'lucide-react';
 import { useInstituicoesBuscar } from '../../hooks/queryes';
 
 export const Cards = () => {
-  const { data = [], isLoading, isPending } = useInstituicoesBuscar();
+  const { dataTodos = [], isLoading, isPending } = useInstituicoesBuscar();
   const navigate = useNavigate();
 
   const cards = useMemo(
     () =>
-      data.map((item) => ({
+      dataTodos.map((item) => ({
         label: `${item.nome}`,
         icon: <BookOpen size={16} color="#76869c" />,
         legenda: (
@@ -40,7 +40,7 @@ export const Cards = () => {
           />
         ),
       })),
-    [data]
+    [dataTodos]
   );
 
   return (

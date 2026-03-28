@@ -43,15 +43,20 @@ export const useMeuPerfil = () => {
         },
     });
 
-     const { data: instituicoes, isLoading: estaCarregandoInstituicoes, refetch: buscaInstituicoesNovamente } = useQuery({
-            queryKey: ['buscaInstituicoesParaFiltro'],
-            queryFn: async () => await instituicaoService.buscar(),
-            select: (data) => data.map((instituicao) => ({
-                value: instituicao.id,
-                label: instituicao.nome,
-            })),
-        });
-
+    const { data: instituicoes, isLoading: estaCarregandoInstituicoes } = useQuery({
+    queryKey: ['buscaInstituicoesParaFiltro', meuPerfil?.role],
+    queryFn: async () => {
+        if (meuPerfil?.role === 'ADMIN') {
+            return await instituicaoService.buscarTodos();
+        }
+        return await instituicaoService.buscar();
+    },
+    enabled: !!meuPerfil?.role, // aguarda o perfil carregar antes de buscar
+    select: (data) => data.map((instituicao) => ({
+        value: instituicao.id,
+        label: instituicao.nome,
+    })),
+});
 
     return { meuPerfil, estaCarregandoMeuPerfil, editar, estaEditando, instituicoes, estaCarregandoInstituicoes,};
 };

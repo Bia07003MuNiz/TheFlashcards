@@ -21,7 +21,7 @@ export const useCriarConta = () => {
 
     const { data: instituicoes, isLoading: estaCarregandoInstituicoes, refetch: buscaInstituicoesNovamente } = useQuery({
         queryKey: ['buscaInstituicoesParaFiltro'],
-        queryFn: async () => await instituicaoService.buscar(),
+        queryFn: async () => await instituicaoService.buscarTodos(),
         select: (data) => data.map((instituicao) => ({
             value: instituicao.id.toString(),
             label: instituicao.nome,

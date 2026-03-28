@@ -4,6 +4,7 @@ import Validator from "./instituicao.validator";
 import { AuthMiddleware } from "@modules/auth/auth.middleware";
 
 const router = Router();
+router.get("/todos", Controller.readTodos);
 
 router.use(AuthMiddleware);
 router

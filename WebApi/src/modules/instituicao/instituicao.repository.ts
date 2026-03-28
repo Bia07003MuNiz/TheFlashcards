@@ -16,6 +16,12 @@ class InstituicaoRepository {
         });
     }
 
+    public async readTodos() {
+        return await this.repository.findMany({
+            orderBy: { created_at: "desc" },
+        });
+    }
+
    public async read(userId: number, role: string) {
     if (role === 'ADMIN') {
       return this.repository.findMany({

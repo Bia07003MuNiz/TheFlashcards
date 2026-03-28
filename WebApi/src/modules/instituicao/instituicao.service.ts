@@ -18,6 +18,10 @@ class InstituicaoService {
         return await this.repository.read(userId, role);
     }
 
+    public async readTodos() {
+        return await this.repository.readTodos();
+    }
+
     public async readById(id: number) {
         return await this.repository.readById(id);
     }

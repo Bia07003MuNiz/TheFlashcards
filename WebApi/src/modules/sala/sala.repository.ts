@@ -23,30 +23,34 @@ class SalaRepository {
   }
 
   public async read(userId: number, role: string) {
-    if (role === "ADMIN") {
-      return this.repository.findMany({
-        orderBy: { created_at: "asc" },
-        include: { flashcards: true },
-      });
-    }
+  const order = [
+    { ativa: 'desc' },
+    { created_at: 'asc' },
+  ];
 
-    const usuario = await DataSource.usuario.findUnique({
-      where: { id: userId },
-      include: { instituicoes: true },
-    });
-
-    const instituicoesIds = usuario?.instituicoes.map((i) => i.instituicaoId) || [];
-
+  if (role === "ADMIN") {
     return this.repository.findMany({
-      where: {
-        instituicao_id: {
-          in: instituicoesIds,
-        } 
-      },
-      orderBy: { created_at: "asc" },
+      orderBy: order,
       include: { flashcards: true },
     });
   }
+
+  const usuario = await DataSource.usuario.findUnique({
+    where: { id: userId },
+    include: { instituicoes: true },
+  });
+
+  const instituicoesIds = usuario?.instituicoes.map((i) => i.instituicaoId) || [];
+  return this.repository.findMany({
+    where: {
+      instituicao_id: {
+        in: instituicoesIds,
+      },
+    },
+    orderBy: order,
+    include: { flashcards: true },
+  });
+}
 
   public async readById(id: number) {
     return this.repository.findUnique({

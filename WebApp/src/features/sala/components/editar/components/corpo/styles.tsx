@@ -5,6 +5,10 @@ export const ContainerLayout = styled(Box)`
   gap: 24px;
   width: 100%;
   align-items: flex-start;
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    flex-direction: column;
+  }
 `;
 
 export const ColunaEsquerda = styled(Box)`
@@ -12,10 +16,20 @@ export const ColunaEsquerda = styled(Box)`
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    width: 100%;
+    order: 1;
+  }
 `;
 
 export const ColunaDireita = styled(Box)`
   width: 35%;
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    width: 100%;
+    order: 2;
+  }
 `;
 
 export const ContainerBotao = styled(Box)`

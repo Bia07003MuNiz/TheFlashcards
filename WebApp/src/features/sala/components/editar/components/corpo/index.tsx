@@ -13,6 +13,8 @@ import { InformacaoGeral } from './informacoesGerais';
 import { PerguntasERespostas } from './perguntaResposta';
 import { Pencil } from 'lucide-react';
 import { Configuracoe } from './configuracoes';
+import { useNavigate } from 'react-router-dom';
+import { rotas } from '@constants/rotas';
 
 type Props = ReturnType<typeof useSalaController>;
 
@@ -25,7 +27,7 @@ export const CorpoEditarSala: FC<Props> = ({
 }) => {
   const { estaCarregandoInstituicoes } = useSalas();
   const salaId = Number(watch('id') ?? 0);
-
+  const navigate = useNavigate();
   return (
     <ContainerLayout>
       <ColunaEsquerda>
@@ -52,6 +54,7 @@ export const CorpoEditarSala: FC<Props> = ({
           <BotaoCustomizado.BotaoSecundario
             className="botaoCustomizado"
             titulo="Cancelar"
+            onClick={() => navigate(rotas.SALA)}
           />
 
           <BotaoCustomizado.BotaoPrimario

@@ -27,4 +27,9 @@ export const ConteudoInical = styled(Box)`
   .botao{
     margin-top: 15px;
   }
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    flex-direction: column;
+  }
+
 `;

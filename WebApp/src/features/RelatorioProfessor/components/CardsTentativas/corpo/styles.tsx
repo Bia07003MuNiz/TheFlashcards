@@ -54,6 +54,14 @@ export const CardAluno = styled(Box)`
     top: 20px;
     right: 20px;
   }
+
+    ${({ theme }) => theme.breakpoints.down("laptop")} {
+    .topo {
+      position: static;
+      width: 100%;
+      order: 4; // 👈 botão por último
+    }
+  }
 `
 export const InfoPrincipal = styled(Box)`
   display: flex;
@@ -68,38 +76,54 @@ export const InfoPrincipal = styled(Box)`
     font-weight: 600;
     color: #0f172a;
   }
+  
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    order: 1; 
+  }
 `
 export const Metricas = styled(Box)`
   display: flex;
   gap: 16px;
 
-  .boxErros {
-    display: flex;
-    align-items: center;
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "acerto erro" "data data";
     gap: 8px;
-    font-weight: 500;
-    font-size: 14px;
-    color: #314158;
+    order: 2; 
   }
 
   .boxAcerto {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-weight: 500;
-    font-size: 14px;
-    color: #314158;
+
+    ${({ theme }) => theme.breakpoints.down("laptop")} {
+      grid-area: acerto;
+    }
   }
 
-  .boxTentativa{
-    padding: 2px;
+  .boxErros {
     display: flex;
     align-items: center;
     gap: 8px;
-    font-size: 14px;
-    color: #314158;
+
+    ${({ theme }) => theme.breakpoints.down("laptop")} {
+      grid-area: erro;
+    }
   }
-`
+
+  .boxTentativa {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    ${({ theme }) => theme.breakpoints.down("laptop")} {
+      grid-area: data;
+      margin-top: 4px;
+    }
+  }
+`;
 
 export const CardBrancoConteudo = styled(Box)`
   width: 100%;

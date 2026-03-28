@@ -44,22 +44,45 @@ export const CardAluno = styled(Box)`
   position: relative;
   transition: border 0.2s ease, box-shadow 0.2s ease;
 
-    &:hover {
-      border: 2px solid #b1beff;
-      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  &:hover {
+    border: 2px solid #b1beff;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  }
 
-    }
-
-    .topo {
+  .topo {
     position: absolute;
     top: 20px;
     right: 20px;
+
+    ${({ theme }) => theme.breakpoints.down("laptop")} {
+      position: static;
+      width: 100%;
+      margin-top: 12px;
+    }
   }
-`
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    display: flex;
+    flex-direction: column;
+
+    .topo {
+      order: 3; 
+    }
+  }
+`;
+
 export const InfoPrincipal = styled(Box)`
   display: flex;
   align-items: center;
   gap: 20px;
+
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    grid-template-areas:
+      "avatar nome"
+      "avatar email";
+  }
 
   .avatar {
     width: 60px;
@@ -72,18 +95,30 @@ export const InfoPrincipal = styled(Box)`
     font-weight: 700;
     font-size: 22px;
     color: #432dd7;
+
+    ${({ theme }) => theme.breakpoints.down("laptop")} {
+      grid-area: avatar;
+    }
   }
 
- .dados {
+  .dados {
     display: flex;
     flex-direction: column;
     gap: 6px;
+
+    ${({ theme }) => theme.breakpoints.down("laptop")} {
+      display: contents;
+    }
   }
 
   .nome {
     font-size: 18px;
     font-weight: 600;
     color: #0f172a;
+
+    ${({ theme }) => theme.breakpoints.down("laptop")} {
+      grid-area: nome;
+    }
   }
 
   .email {
@@ -92,8 +127,13 @@ export const InfoPrincipal = styled(Box)`
     gap: 6px;
     color: #64748b;
     font-size: 14px;
+
+    ${({ theme }) => theme.breakpoints.down("laptop")} {
+      grid-area: email;
+    }
   }
-`
+`;
+
 export const Metricas = styled(Box)`
   display: flex;
   gap: 20px;
@@ -137,8 +177,22 @@ export const Metricas = styled(Box)`
     border-radius: 12px;
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   }
-`
+  ${({ theme }) => theme.breakpoints.down("laptop")} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
 
+  .boxErros,
+  .boxAcerto,
+  .boxTentativa {
+    width: 200px;
+
+    ${({ theme }) => theme.breakpoints.down("laptop")} {
+      width: 100%;
+    }
+  } 
+`
 export const CardBrancoConteudo = styled(Box)`
   width: 100%;
   height: 450px;

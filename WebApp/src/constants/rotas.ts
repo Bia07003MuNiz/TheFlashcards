@@ -25,7 +25,6 @@ export const rotas = {
 } as const;
 
 export const rotasDinamicas = {
-  PAGAREDITAR: (id: string) => `/contas-a-pagar/${id}`,
   TENTATIVA_ALUNO: (id: string) => `/relatorios-aluno/tentativa/${id}`,
 };
 

@@ -21,7 +21,7 @@ export const Corpo = styled(Box)`
     }
 
     .lado-apresentacao-container {
-      width: 100%;
+      width: 85%;
       height: 100vh;
     }
   }

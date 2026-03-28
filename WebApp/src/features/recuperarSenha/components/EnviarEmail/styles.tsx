@@ -45,7 +45,19 @@ export const Form = styled('form')`
   & > * {
     width: 100%;
     max-width: 100%;
-    min-width: 0;   
+    min-width: 0;
+  }
+
+  /* 🔥 FORÇA INPUT NÃO ESTOURAR */
+  .MuiFormControl-root {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .MuiInputBase-root {
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .recuperarSenha{

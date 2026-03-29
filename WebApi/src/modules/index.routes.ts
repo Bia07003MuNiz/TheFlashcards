@@ -13,12 +13,6 @@ import RecuperaSenhaRoutes from "./recuperaSenha/recuperaSenha.routes";
 
 const router = Router();
 
-
-router.get("/health", (_req, res) => {
-  res.status(200).json({ ok: true });
-});
-
-
 router.use("/recupera-senha", RecuperaSenhaRoutes)
 router.use("/instituicao", InstituicaoRoutes);
 router.use("/usuario", UsuarioRoutes);

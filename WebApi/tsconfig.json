@@ -1,41 +1,31 @@
 {
-    "compilerOptions": {
-        "target": "ES2020",
-        "module": "commonjs",
-        "noEmit": true,
-        "moduleResolution": "node",
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "esModuleInterop": true,
-        "baseUrl": "./src",
-        "paths": {
-            "@decorators/*": [
-                "utils/decorators/*"
-            ],
-            "@modules/*": [
-                "modules/*"
-            ],
-            "@database/*": [
-                "database/*"
-            ],
-            "@shared/*": [
-                "shared/*"
-            ],
-            "@errors/*": [
-                "errors/*"
-            ],
-            "@dtos/*": [
-                "utils/dtos/*"
-            ],
-            "@customTypes/*": [
-                "utils/types/*"
-            ],
-            "@abstracts/*": [
-                "utils/abstracts/*"
-            ],
-            "@config/*": [
-                "config/*"
-            ]
-        }
-    }
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "commonjs",
+    "moduleResolution": "node",
+
+    "rootDir": "./src",
+    "outDir": "./dist",
+
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+
+    "baseUrl": "./src",
+    "paths": {
+      "@decorators/*": ["utils/decorators/*"],
+      "@modules/*": ["modules/*"],
+      "@database/*": ["database/*"],
+      "@shared/*": ["shared/*"],
+      "@errors/*": ["errors/*"],
+      "@dtos/*": ["utils/dtos/*"],
+      "@customTypes/*": ["utils/types/*"],
+      "@abstracts/*": ["utils/abstracts/*"],
+      "@config/*": ["config/*"]
+    },
+
+    "skipLibCheck": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
 }

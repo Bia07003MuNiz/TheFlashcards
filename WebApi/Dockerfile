@@ -13,10 +13,3 @@ RUN npm run build
 EXPOSE 3000
 
 CMD ["npm", "run", "start"]
-```
-
-Depois adiciona o `.dockerignore` também na raiz:
-```
-node_modules
-dist
-.env

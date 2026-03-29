@@ -19,15 +19,18 @@ class App {
   }
 
   private middlewares() {
-    this.app.use(cors({
-      origin: "http://localhost:5173",
-      credentials: true,
-    }));
-    this.app.use(express.json());
-    this.app.use(cookieParser());
-    this.app.use(compression());
-    this.app.use(helmet());
-  }
+  this.app.use(cors({
+    origin: [
+      "http://localhost:5173",
+      "https://the-flashcards.vercel.app",
+    ],
+    credentials: true,
+  }));
+  this.app.use(express.json());
+  this.app.use(cookieParser());
+  this.app.use(compression());
+  this.app.use(helmet());
+}
 
   private routes() {
     this.app.use("/", routes);

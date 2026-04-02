@@ -1,10 +1,10 @@
 import { BarraLateralContainers } from './components/containers';
 import { Conteudo } from './components/containers/main/styles';
 
-export const BarraLateralComum = () => {
+export const BarraLateralComum = ({ onNavegar }: { onNavegar: () => void }) => {
   return (
     <Conteudo>
-      <BarraLateralContainers.Corpo/>
+      <BarraLateralContainers.Corpo onNavegar={onNavegar} />
     </Conteudo>
   );
 };

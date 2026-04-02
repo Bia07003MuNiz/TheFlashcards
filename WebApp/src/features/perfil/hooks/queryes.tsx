@@ -2,8 +2,10 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import UsuarioService, { type EditarUsuarioDto } from '../services';
 import instituicaoService from '@features/instituicoes/services';
 import { snackBar } from '@utils/SnackBar';
+import useAuth from '@contexts/AuthContext';
 
 export const useMeuPerfil = () => {
+    const { signIn } = useAuth();
     const {
         data: meuPerfil,
         isLoading: estaCarregandoMeuPerfil,
@@ -11,8 +13,7 @@ export const useMeuPerfil = () => {
     } = useQuery({
         queryKey: ['Usuarios', 'buscarMeuPerfil'],
         queryFn: async () => await UsuarioService.buscarMeuPerfil(),
-        enabled: false,
-
+        enabled: signIn,
         select: ({ data }) => ({
             id: data.id,
             nome: data.nome,

@@ -39,7 +39,7 @@ export const MenuNavegacao = () => {
             open={open}
             onClose={() => setOpen(false)}
           >
-            <BarraLateralComum />
+            <BarraLateralComum onNavegar={() => setOpen(false)} /> {/* ← passa o callback */}
           </Drawer>
 
           <Outlet />
@@ -51,7 +51,7 @@ export const MenuNavegacao = () => {
   return (
     <ComumProvider>
       <Corpo>
-        <BarraLateralComum />
+        <BarraLateralComum onNavegar={() => setOpen(false)} /> {/* ← sem onNavegar no desktop */}
         <Pagina>
           <Outlet />
         </Pagina>

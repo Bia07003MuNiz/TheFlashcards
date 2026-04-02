@@ -1,26 +1,33 @@
-import useAuth from '@contexts/AuthContext';
 import { useMeuPerfil } from '@features/perfil/hooks/queryes';
-import type { FC } from 'react';
+import { useEffect, type FC } from 'react';
 import { Outlet, Navigate } from 'react-router-dom';
 import { rotas } from '@constants/rotas';
+import localStorageService from '@services/localStorage.service';
 
 interface AuthGuardProps {
   isPrivate: boolean;
 }
-
 export const AuthGuard: FC<AuthGuardProps> = ({ isPrivate }) => {
-  const { signIn } = useAuth();
-  const { meuPerfil } = useMeuPerfil();
+  const token = localStorageService.getToken();
+  const isAuthenticated = !!token;
 
-  if (!signIn && isPrivate) {
+  const { meuPerfil, refetch, estaCarregandoMeuPerfil } = useMeuPerfil();
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      refetch();
+    }
+  }, [isAuthenticated]);
+
+  if (!isAuthenticated && isPrivate) {
     return <Navigate to="/login" replace />;
   }
 
-  if (signIn && !meuPerfil) {
+  if (isAuthenticated && estaCarregandoMeuPerfil) {
     return null;
   }
 
-  if (signIn && !isPrivate) {
+  if (isAuthenticated && !isPrivate) {
     const role = meuPerfil?.role;
 
     if (role === 'ADMIN') {

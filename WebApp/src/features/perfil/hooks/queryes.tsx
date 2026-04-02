@@ -3,7 +3,6 @@ import UsuarioService, { type EditarUsuarioDto } from '../services';
 import instituicaoService from '@features/instituicoes/services';
 import { snackBar } from '@utils/SnackBar';
 
-
 export const useMeuPerfil = () => {
     const {
         data: meuPerfil,
@@ -12,6 +11,8 @@ export const useMeuPerfil = () => {
     } = useQuery({
         queryKey: ['Usuarios', 'buscarMeuPerfil'],
         queryFn: async () => await UsuarioService.buscarMeuPerfil(),
+        enabled: false,
+
         select: ({ data }) => ({
             id: data.id,
             nome: data.nome,
@@ -22,8 +23,8 @@ export const useMeuPerfil = () => {
             instituicoes: data.instituicoes.map((i) => i.instituicaoId)
         }),
     });
-
-     const {
+    
+    const {
         mutateAsync: editar,
         isPending: estaEditando,
     } = useMutation({
@@ -58,6 +59,6 @@ export const useMeuPerfil = () => {
     })),
 });
 
-    return { meuPerfil, estaCarregandoMeuPerfil, editar, estaEditando, instituicoes, estaCarregandoInstituicoes,};
+    return { meuPerfil, estaCarregandoMeuPerfil, editar, estaEditando, instituicoes, estaCarregandoInstituicoes, refetch};
 };
 

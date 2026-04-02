@@ -3,8 +3,6 @@ import { LoginComponentes } from '../components/containers/main';
 import { Corpo } from '../components/containers/main/styles';
 import { snackBar } from '@utils/SnackBar';
 import { useEffect } from 'react';
-import { Box } from '@mui/material';
-
 
 export const LoginPagina = () => {
   useEffect(() => {
